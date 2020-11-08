@@ -1,9 +1,25 @@
-import java.awt.Component;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
 
 public class Calculator {
+	
+	static String input_name;
+	static String input_weight;
+	static String input_height_ft;
+	static String input_height_in;
+	static String input_sex;
+	static String input_age;
+	
+	private static void print_details() {
+		System.out.println("Name: " + input_name);
+		System.out.println("Weight: " + input_weight);
+		System.out.println("Height: " + input_height_ft + " " + input_height_in);
+		System.out.println("Sex: " + input_sex);
+		System.out.println("Age: " + input_age);	
+	}
 	
 	public static void main(String[] args) {
 		// initial frame
@@ -16,7 +32,6 @@ public class Calculator {
 		
 		JLabel jl_name = new JLabel("Name");
 		JTextField jtf_name = new JTextField(25);
-		String input_name = new String();
 		
 		jl_name.setBounds(20, 20, 20, 20);
 		jtf_name.setBounds(30, 30, 100, 20);
@@ -26,7 +41,6 @@ public class Calculator {
 		
 		JLabel jl_weight = new JLabel("Weight");
 		JTextField jtf_weight = new JTextField(10);
-		int input_weight;
 		
 		jl_weight.setBounds(0, 0, 0, 0);
 		jtf_weight.setBounds(0, 0, 0, 0);
@@ -37,8 +51,6 @@ public class Calculator {
 		JLabel jl_height = new JLabel("Height (ft in)");
 		JTextField jtf_height_ft = new JTextField(5);
 		JTextField jtf_height_in = new JTextField(5);
-		int input_height_ft;
-		int input_height_in;
 		
 		jl_height.setBounds(0, 0, 0, 0);
 		jtf_height_ft.setBounds(0, 0, 0, 0);
@@ -52,7 +64,6 @@ public class Calculator {
 		ButtonGroup bg_sex = new ButtonGroup();
 		JRadioButton jrb_male = new JRadioButton("Male");
 		JRadioButton jrb_female = new JRadioButton("Female");
-		String input_sex;
 		
 		jl_sex.setBounds(0, 0, 0, 0);
 		jrb_male.setBounds(0, 0, 0, 0);
@@ -67,7 +78,6 @@ public class Calculator {
 		
 		JLabel jl_age = new JLabel("Age");
 		JTextField jtf_age = new JTextField(5);
-		int input_age;
 		
 		jl_age.setBounds(0, 0, 0, 0);
 		jtf_age.setBounds(0, 0, 0, 0);
@@ -99,6 +109,31 @@ public class Calculator {
 		
 		JButton generate = new JButton("Generate Report");
 		generate.setBounds(190, 445, 120, 20);
+		
+		// receive input into variables
+		generate.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				input_name = jtf_name.getText();
+				input_weight = jtf_weight.getText();
+				input_height_ft = jtf_height_ft.getText();
+				input_height_in = jtf_height_in.getText();
+				
+				if (jrb_male.isSelected()) {
+					input_sex = "Male";
+				}
+				else if (jrb_female.isSelected()) {
+					input_sex = "Female";
+				}
+				else {
+					input_sex = "Prefer not to say";
+				}
+				
+				input_age = jtf_age.getText();
+				
+				print_details();
+			}
+		});
 		
 		// TODO: pull all info and add it to the html. then generate
 		//       the pdf 
