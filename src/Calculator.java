@@ -1,8 +1,15 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 import javax.swing.*;
 
+import com.itextpdf.html2pdf.ConverterProperties;
+import com.itextpdf.html2pdf.HtmlConverter;
 
 public class Calculator {
 	
@@ -21,7 +28,7 @@ public class Calculator {
 		System.out.println("Age: " + input_age);	
 	}
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws FileNotFoundException, IOException {
 		// initial frame
 		JFrame f = new JFrame("Fitness Calculator"); 
 		f.setSize(500, 500);
@@ -137,6 +144,13 @@ public class Calculator {
 		
 		// TODO: pull all info and add it to the html. then generate
 		//       the pdf 
+		
+		File htmlSource = new File("res/pub/The Weight Loss Guide.html");
+        File pdfDest = new File("output.pdf");
+        
+		ConverterProperties converterProperties = new ConverterProperties();
+        HtmlConverter.convertToPdf(new FileInputStream(htmlSource), 
+       new FileOutputStream(pdfDest), converterProperties);
 		
 		f.add(generate);
 		
