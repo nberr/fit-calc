@@ -1,48 +1,73 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>fit-calc</groupId>
-  <artifactId>fit-calc</artifactId>
+  <groupId>bubbiewaschubbie</groupId>
+  <artifactId>Fitness-Calculator</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <build>
-    <sourceDirectory>src</sourceDirectory>
-    <plugins>
-      <plugin>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.8.1</version>
-        <configuration>
-          <release>14</release>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
-  <repositories>
-  <repository>
-    <id>itext</id>
-    <name>iText Repository - releases</name>
-    <url>https://repo.itextsupport.com/releases</url>
-  </repository>
-</repositories>
-<properties>
-       <itext.pdfhtml.version>3.0.2</itext.pdfhtml.version>
-</properties>
+  <name>Fitness Calculator</name>
+  <description>fitness calculator for michael
+</description>
 <dependencies>
+
   <dependency>
     <groupId>com.itextpdf</groupId>
-    <artifactId>html2pdf</artifactId>
-    <version>${itext.pdfhtml.version}</version>
+    <artifactId>barcodes</artifactId>
+    <version>7.0.0</version>
+    <!-- barcodes depends on kernel -->
   </dependency>
+
   <dependency>
-       <groupId>org.slf4j</groupId>
-       <artifactId>slf4j-api</artifactId>
-       <version>1.7.5</version>
-   </dependency>
-   <dependency>
-       <groupId>org.slf4j</groupId>
-       <artifactId>slf4j-log4j12</artifactId>
-       <version>1.7.5</version>
-   </dependency>
+    <groupId>com.itextpdf</groupId>
+    <artifactId>font-asian</artifactId>
+    <version>7.0.0</version>
+  </dependency>
+
+  <dependency>
+    <groupId>com.itextpdf</groupId>
+    <artifactId>forms</artifactId>
+    <version>7.0.0</version>
+    <!-- forms depends on kernel and layout -->
+  </dependency>
+
+  <dependency>
+      <groupId>com.itextpdf</groupId>
+      <artifactId>hyph</artifactId>
+      <version>7.0.0</version>
+  </dependency>
+
+  <dependency>
+    <groupId>com.itextpdf</groupId>
+    <artifactId>io</artifactId>
+    <version>7.0.0</version>
+  </dependency>
+
+  <dependency>
+    <groupId>com.itextpdf</groupId>
+    <artifactId>kernel</artifactId>
+    <version>7.0.0</version>
+    <!-- kernel depends on io -->
+  </dependency>
+
+  <dependency>
+    <groupId>com.itextpdf</groupId>
+    <artifactId>layout</artifactId>
+    <version>7.0.0</version>
+    <!-- layout depends on kernel -->
+  </dependency>
+
+  <dependency>
+    <groupId>com.itextpdf</groupId>
+    <artifactId>pdfa</artifactId>
+    <version>7.0.0</version>
+    <!-- pdfa depends on kernel -->
+  </dependency>
+
+  <dependency>
+    <groupId>com.itextpdf</groupId>
+    <artifactId>sign</artifactId>
+    <version>7.0.0</version>
+    <!-- sign depends on kernel, layout and forms -->
+  </dependency>
+
 </dependencies>
-  
-  
-  
+
 </project>
