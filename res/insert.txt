@@ -1,0 +1,6 @@
+keyword,page number,x coordinate,y coordinate,font,color,size,allignment
+name,1,105,340,Helvetica,Gray,36,left
+age,3,107,572,Helvetica,Black,10,center
+sex,3,240,572,Helvetica,Black,10,center
+weight,3,373,572,Helvetica,Black,10,center
+height,3,506,572,Helvetica,Black,10,center

@@ -81,6 +81,8 @@
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.GenerateReport = new System.Windows.Forms.Button();
             this.ClearAll = new System.Windows.Forms.Button();
+            this.label22 = new System.Windows.Forms.Label();
+            this.CoachNameTextBox = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -109,6 +111,8 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.CoachNameTextBox);
+            this.tabPage1.Controls.Add(this.label22);
             this.tabPage1.Controls.Add(this.label18);
             this.tabPage1.Controls.Add(this.InsertTextBox);
             this.tabPage1.Controls.Add(this.label1);
@@ -642,6 +646,24 @@
             this.ClearAll.UseVisualStyleBackColor = true;
             this.ClearAll.Click += new System.EventHandler(this.ClearAll_Click);
             // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.Location = new System.Drawing.Point(43, 156);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(79, 13);
+            this.label22.TabIndex = 4;
+            this.label22.Text = "Coach Name";
+            // 
+            // CoachNameTextBox
+            // 
+            this.CoachNameTextBox.Location = new System.Drawing.Point(128, 153);
+            this.CoachNameTextBox.Name = "CoachNameTextBox";
+            this.CoachNameTextBox.Size = new System.Drawing.Size(270, 20);
+            this.CoachNameTextBox.TabIndex = 5;
+            this.CoachNameTextBox.Text = "Michael Laub";
+            // 
             // FitnessCalculator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -728,6 +750,8 @@
         private System.Windows.Forms.TrackBar trackBar3;
         private System.Windows.Forms.TrackBar trackBar2;
         private System.Windows.Forms.TrackBar trackBar1;
+        private System.Windows.Forms.TextBox CoachNameTextBox;
+        private System.Windows.Forms.Label label22;
     }
 }
 
