@@ -59,10 +59,10 @@
             this.WeightLossTextBox = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.PAMUpDown = new System.Windows.Forms.NumericUpDown();
             this.label17 = new System.Windows.Forms.Label();
             this.PAMCustom = new System.Windows.Forms.RadioButton();
             this.PAMEstimate = new System.Windows.Forms.RadioButton();
-            this.PAMTextBox = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.DALLabel = new System.Windows.Forms.Label();
             this.WPELabel = new System.Windows.Forms.Label();
@@ -71,9 +71,11 @@
             this.DALComboBox = new System.Windows.Forms.ComboBox();
             this.WPEComboBox = new System.Windows.Forms.ComboBox();
             this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.trackBar3 = new System.Windows.Forms.TrackBar();
-            this.trackBar2 = new System.Windows.Forms.TrackBar();
-            this.trackBar1 = new System.Windows.Forms.TrackBar();
+            this.MacroRatLabel = new System.Windows.Forms.Label();
+            this.DietPrefLabel = new System.Windows.Forms.Label();
+            this.ProteinTrackBar = new System.Windows.Forms.TrackBar();
+            this.CarbTrackBar = new System.Windows.Forms.TrackBar();
+            this.FatTrackBar = new System.Windows.Forms.TrackBar();
             this.MealsComboBox = new System.Windows.Forms.ComboBox();
             this.label21 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
@@ -113,10 +115,11 @@
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.tabPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PAMUpDown)).BeginInit();
             this.tabPage5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ProteinTrackBar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CarbTrackBar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FatTrackBar)).BeginInit();
             this.ResultsTabPage.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -435,10 +438,10 @@
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.PAMUpDown);
             this.tabPage4.Controls.Add(this.label17);
             this.tabPage4.Controls.Add(this.PAMCustom);
             this.tabPage4.Controls.Add(this.PAMEstimate);
-            this.tabPage4.Controls.Add(this.PAMTextBox);
             this.tabPage4.Controls.Add(this.label16);
             this.tabPage4.Controls.Add(this.DALLabel);
             this.tabPage4.Controls.Add(this.WPELabel);
@@ -453,6 +456,37 @@
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Activity";
             this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // PAMUpDown
+            // 
+            this.PAMUpDown.DecimalPlaces = 2;
+            this.PAMUpDown.Enabled = false;
+            this.PAMUpDown.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.PAMUpDown.Location = new System.Drawing.Point(58, 251);
+            this.PAMUpDown.Maximum = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
+            this.PAMUpDown.Minimum = new decimal(new int[] {
+            111,
+            0,
+            0,
+            131072});
+            this.PAMUpDown.Name = "PAMUpDown";
+            this.PAMUpDown.ReadOnly = true;
+            this.PAMUpDown.Size = new System.Drawing.Size(47, 20);
+            this.PAMUpDown.TabIndex = 11;
+            this.PAMUpDown.Value = new decimal(new int[] {
+            111,
+            0,
+            0,
+            131072});
+            this.PAMUpDown.ValueChanged += new System.EventHandler(this.PAMUpDown_ValueChanged);
             // 
             // label17
             // 
@@ -486,15 +520,6 @@
             this.PAMEstimate.Text = "Estimate";
             this.PAMEstimate.UseVisualStyleBackColor = true;
             this.PAMEstimate.CheckedChanged += new System.EventHandler(this.PAMEstimate_CheckedChanged);
-            // 
-            // PAMTextBox
-            // 
-            this.PAMTextBox.Location = new System.Drawing.Point(58, 248);
-            this.PAMTextBox.Name = "PAMTextBox";
-            this.PAMTextBox.ReadOnly = true;
-            this.PAMTextBox.Size = new System.Drawing.Size(47, 20);
-            this.PAMTextBox.TabIndex = 7;
-            this.PAMTextBox.TextChanged += new System.EventHandler(this.PAMTextBox_TextChanged);
             // 
             // label16
             // 
@@ -575,9 +600,11 @@
             // 
             // tabPage5
             // 
-            this.tabPage5.Controls.Add(this.trackBar3);
-            this.tabPage5.Controls.Add(this.trackBar2);
-            this.tabPage5.Controls.Add(this.trackBar1);
+            this.tabPage5.Controls.Add(this.MacroRatLabel);
+            this.tabPage5.Controls.Add(this.DietPrefLabel);
+            this.tabPage5.Controls.Add(this.ProteinTrackBar);
+            this.tabPage5.Controls.Add(this.CarbTrackBar);
+            this.tabPage5.Controls.Add(this.FatTrackBar);
             this.tabPage5.Controls.Add(this.MealsComboBox);
             this.tabPage5.Controls.Add(this.label21);
             this.tabPage5.Controls.Add(this.label20);
@@ -592,26 +619,43 @@
             this.tabPage5.Text = "Diet";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
-            // trackBar3
+            // MacroRatLabel
             // 
-            this.trackBar3.Location = new System.Drawing.Point(145, 86);
-            this.trackBar3.Name = "trackBar3";
-            this.trackBar3.Size = new System.Drawing.Size(104, 45);
-            this.trackBar3.TabIndex = 11;
+            this.MacroRatLabel.Location = new System.Drawing.Point(212, 44);
+            this.MacroRatLabel.Name = "MacroRatLabel";
+            this.MacroRatLabel.Size = new System.Drawing.Size(121, 58);
+            this.MacroRatLabel.TabIndex = 13;
             // 
-            // trackBar2
+            // DietPrefLabel
             // 
-            this.trackBar2.Location = new System.Drawing.Point(145, 146);
-            this.trackBar2.Name = "trackBar2";
-            this.trackBar2.Size = new System.Drawing.Size(104, 45);
-            this.trackBar2.TabIndex = 10;
+            this.DietPrefLabel.Location = new System.Drawing.Point(89, 44);
+            this.DietPrefLabel.Name = "DietPrefLabel";
+            this.DietPrefLabel.Size = new System.Drawing.Size(117, 58);
+            this.DietPrefLabel.TabIndex = 12;
             // 
-            // trackBar1
+            // ProteinTrackBar
             // 
-            this.trackBar1.Location = new System.Drawing.Point(145, 197);
-            this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(104, 45);
-            this.trackBar1.TabIndex = 9;
+            this.ProteinTrackBar.Location = new System.Drawing.Point(145, 105);
+            this.ProteinTrackBar.Name = "ProteinTrackBar";
+            this.ProteinTrackBar.Size = new System.Drawing.Size(104, 45);
+            this.ProteinTrackBar.TabIndex = 11;
+            this.ProteinTrackBar.Visible = false;
+            // 
+            // CarbTrackBar
+            // 
+            this.CarbTrackBar.Location = new System.Drawing.Point(142, 156);
+            this.CarbTrackBar.Name = "CarbTrackBar";
+            this.CarbTrackBar.Size = new System.Drawing.Size(104, 45);
+            this.CarbTrackBar.TabIndex = 10;
+            this.CarbTrackBar.Visible = false;
+            // 
+            // FatTrackBar
+            // 
+            this.FatTrackBar.Location = new System.Drawing.Point(142, 207);
+            this.FatTrackBar.Name = "FatTrackBar";
+            this.FatTrackBar.Size = new System.Drawing.Size(104, 45);
+            this.FatTrackBar.TabIndex = 9;
+            this.FatTrackBar.Visible = false;
             // 
             // MealsComboBox
             // 
@@ -646,7 +690,7 @@
             // 
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(231, 20);
+            this.label20.Location = new System.Drawing.Point(212, 4);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(119, 13);
             this.label20.TabIndex = 6;
@@ -655,6 +699,7 @@
             // MacroRatioComboBox
             // 
             this.MacroRatioComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.MacroRatioComboBox.Enabled = false;
             this.MacroRatioComboBox.FormattingEnabled = true;
             this.MacroRatioComboBox.Items.AddRange(new object[] {
             "Balanced",
@@ -664,9 +709,9 @@
             "Customize Macro Grams",
             "Enter Desired Macro Totals",
             "Enter Desired Hand Portions"});
-            this.MacroRatioComboBox.Location = new System.Drawing.Point(234, 36);
+            this.MacroRatioComboBox.Location = new System.Drawing.Point(215, 20);
             this.MacroRatioComboBox.Name = "MacroRatioComboBox";
-            this.MacroRatioComboBox.Size = new System.Drawing.Size(121, 21);
+            this.MacroRatioComboBox.Size = new System.Drawing.Size(172, 21);
             this.MacroRatioComboBox.TabIndex = 5;
             this.MacroRatioComboBox.SelectedIndexChanged += new System.EventHandler(this.MacroRatioComboBox_SelectedIndexChanged);
             // 
@@ -681,7 +726,7 @@
             "Vegetarian",
             "Ketogenic",
             "Fully Plant-Based"});
-            this.DietaryPrefComboBox.Location = new System.Drawing.Point(75, 36);
+            this.DietaryPrefComboBox.Location = new System.Drawing.Point(89, 20);
             this.DietaryPrefComboBox.Name = "DietaryPrefComboBox";
             this.DietaryPrefComboBox.Size = new System.Drawing.Size(117, 21);
             this.DietaryPrefComboBox.TabIndex = 4;
@@ -691,7 +736,7 @@
             // 
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(79, 20);
+            this.label19.Location = new System.Drawing.Point(89, 4);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(113, 13);
             this.label19.TabIndex = 3;
@@ -1014,11 +1059,12 @@
             this.tabPage3.PerformLayout();
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PAMUpDown)).EndInit();
             this.tabPage5.ResumeLayout(false);
             this.tabPage5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ProteinTrackBar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CarbTrackBar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FatTrackBar)).EndInit();
             this.ResultsTabPage.ResumeLayout(false);
             this.ResultsTabPage.PerformLayout();
             this.ResumeLayout(false);
@@ -1061,7 +1107,6 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.RadioButton PAMCustom;
         private System.Windows.Forms.RadioButton PAMEstimate;
-        private System.Windows.Forms.TextBox PAMTextBox;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label DALLabel;
         private System.Windows.Forms.Label WPELabel;
@@ -1077,9 +1122,9 @@
         private System.Windows.Forms.ComboBox DietaryPrefComboBox;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.ComboBox MealsComboBox;
-        private System.Windows.Forms.TrackBar trackBar3;
-        private System.Windows.Forms.TrackBar trackBar2;
-        private System.Windows.Forms.TrackBar trackBar1;
+        private System.Windows.Forms.TrackBar ProteinTrackBar;
+        private System.Windows.Forms.TrackBar CarbTrackBar;
+        private System.Windows.Forms.TrackBar FatTrackBar;
         private System.Windows.Forms.TextBox CoachNameTextBox;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label ThumbFatsLabel;
@@ -1107,6 +1152,9 @@
         private System.Windows.Forms.Label ResultMaintenanceCLabel;
         private System.Windows.Forms.Label ResultCustomCLabel;
         private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.NumericUpDown PAMUpDown;
+        private System.Windows.Forms.Label MacroRatLabel;
+        private System.Windows.Forms.Label DietPrefLabel;
     }
 }
 

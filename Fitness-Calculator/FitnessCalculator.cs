@@ -274,7 +274,8 @@ namespace Fitness_Calculator
             if (WPEComboBox.SelectedIndex > -1 && DALComboBox.SelectedIndex > -1)
             {
                 cd.PAM = CalculatePAM(WPEComboBox.SelectedIndex, DALComboBox.SelectedIndex);
-                PAMTextBox.Text = cd.PAM.ToString();
+                
+                PAMUpDown.Value = (decimal)cd.PAM;
             }
 
         }
@@ -309,62 +310,41 @@ namespace Fitness_Calculator
             if (WPEComboBox.SelectedIndex > -1 && DALComboBox.SelectedIndex > -1)
             {
                 cd.PAM = CalculatePAM(WPEComboBox.SelectedIndex, DALComboBox.SelectedIndex);
-                PAMTextBox.Text = cd.PAM.ToString();
+                
+                PAMUpDown.Value = (decimal)cd.PAM;
             }
         }
 
         private void PAMCustom_CheckedChanged(object sender, EventArgs e)
         {
-            PAMTextBox.ReadOnly = false;
+           
+            PAMUpDown.Enabled = true;
         }
 
 
         private void PAMEstimate_CheckedChanged(object sender, EventArgs e)
         {
-            PAMTextBox.ReadOnly = true;
+            
+            PAMUpDown.Enabled = false;
             if (WPEComboBox.SelectedIndex > -1 && DALComboBox.SelectedIndex > -1)
             {
                 cd.PAM = CalculatePAM(WPEComboBox.SelectedIndex, DALComboBox.SelectedIndex);
-                PAMTextBox.Text = cd.PAM.ToString();
+                
+                PAMUpDown.Value = (decimal)cd.PAM;
             }
             else
             {
-                cd.PAM = 0.0;
-                PAMTextBox.Text = "";
+                cd.PAM = 1.11;
+                PAMUpDown.Value = (decimal)cd.PAM;
             }
         }
 
-        private void PAMTextBox_TextChanged(object sender, EventArgs e)
+        
+
+        private void PAMUpDown_ValueChanged(object sender, EventArgs e)
         {
-            if (PAMTextBox.Text != "")
-            {
-                try
-                {
-                    cd.PAM = Convert.ToDouble(PAMTextBox.Text);
-
-                    if (cd.PAM > 3)
-                    {
-                        cd.PAM = 3;
-                        PAMTextBox.Text = cd.PAM.ToString();
-                        MessageBox.Show("Physical Activity Multiplier too high!", "Invalid Value");
-                    }
-
-                    if (cd.PAM < 1.11)
-                    {
-                        cd.PAM = 1.11;
-                        PAMTextBox.Text = cd.PAM.ToString();
-                        MessageBox.Show("Physical Activity Multiplier too low!", "Invalid Value");
-                    }
-                }
-                catch (Exception)
-                {
-                    cd.PAM = 0.0;
-                    PAMTextBox.Clear();
-
-                    MessageBox.Show("Please enter a valid number", "Invalid Value");
-                }
-
-            }
+            cd.PAM = (double)PAMUpDown.Value;
+            
         }
 
         private void MenuTab_SelectedIndexChanged(object sender, EventArgs e)
@@ -375,14 +355,113 @@ namespace Fitness_Calculator
             }
         }
 
+        // index 1 - anything, medditteranean, paleo,
+        private Dictionary<string, Dictionary<string,string>> MacroDisplay = new Dictionary<string,Dictionary<string, string>>();
+        private void InitDictionary()
+        {
+            Dictionary<string, string> AnythingOptions = new Dictionary<string, string>();
+            AnythingOptions.Add("balanced", "~30% protein, ~35% carbs, ~35% fats");
+        }
+        
+
         private void DietaryPrefComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            // anything       - balanced, low-fat, low-carb, custom %, custom grams, macro totals, hand
+            // meditterranean - balanced,        , low-carb, custom %, custom grams, macro totals, hand
+            // paleo          - balanced,        , low-carb, custom %, custom grams, macro totals, hand
+            // vegetarian     - balanced, low-fat, low-carb, custom %, custom grams, macro totals, hand
+            // keto           -               very low-carb, custom %, custom grams, macro totals, hand
+            // fully plant    - balanced, low-fat, low-carb, very low-fat, custom %, custom grams, macro totals, hand
 
+
+            Dictionary<string, string> source = new Dictionary<string, string>();
+            //MacroRatioComboBox.DataSource 
+       
+            switch (DietaryPrefComboBox.SelectedIndex)
+            {
+                case 0:
+                    DietPrefLabel.Text = "No major preferences or restrictions. Will eat practically anything.";
+                    source.Add("balanced", "Balanced");
+                    source.Add("low-fat", "Low-fat");
+                    source.Add("low-carb", "Low-carb");
+
+                    break;
+                case 1:
+                    DietPrefLabel.Text = "Features plant foods, healthy fats, and moderate amounts of lean protein.";
+                    source.Add("balanced", "Balanced");
+                    source.Add("low-carb", "Low-carb");
+
+                    break;
+                case 2:
+                    DietPrefLabel.Text = "Emphasizes meats, vegetables, and healthy fats.";
+                    source.Add("balanced", "Balanced");
+                    source.Add("low-carb", "Low-carb");
+
+                    break;
+                case 3:
+                    DietPrefLabel.Text = "A plant-based diet, plus small amounts of eggs and dairy.";
+                    source.Add("balanced", "Balanced");
+                    source.Add("low-fat", "Low-fat");
+                    source.Add("low-carb", "Low-carb");
+                    break;
+                case 4:
+                    DietPrefLabel.Text = "A high-fat, very-low carbohydrate diet.";
+                    source.Add("very low-carb", "Very low-carb");
+                    break;
+                case 5:
+                    DietPrefLabel.Text = "All plant-based foods. No animal products of any kind.";
+                    source.Add("balanced", "Balanced");
+                    source.Add("low-fat", "Low-fat");
+                    source.Add("low-carb", "Low-carb");
+                    source.Add("very low-fat", "Very low-fat");
+                    break;
+            }
+
+            source.Add("custom %", "Customize Macro Percentages");
+            source.Add("custom grams", "Customize Macro Grams");
+            source.Add("macro totals", "Enter Desired Macro Totals");
+            source.Add("hand", "Enter Desired Hand Portions");
+
+            MacroRatioComboBox.DataSource = new BindingSource(source, null);
+            MacroRatioComboBox.DisplayMember = "Value";
+            MacroRatioComboBox.ValueMember = "Key";
+            MacroRatioComboBox.Enabled = true;
         }
 
         private void MacroRatioComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            switch (MacroRatioComboBox.SelectedIndex)
+            {
+                case 0:
+                    MacroRatLabel.Text = "~30% protein, ~35% carbs, ~35% fats";
+                    break;
+                case 1:
+                    MacroRatLabel.Text = "~30% protein, ~50% carbs, ~20% fats";
+                    break;
+                case 2:
+                    MacroRatLabel.Text = "~30% protein, ~20% carbs, ~50% fats";
+                    break;
+                case 3:
+                    MacroRatLabel.Text = "~20% protein, ~70% carbs, ~10% fats";
+                    break;
+                case 4: // customize macro percentages
+                    MacroRatLabel.Text = "";
 
+                    ProteinTrackBar.Visible = true;
+                    CarbTrackBar.Visible = true;
+                    FatTrackBar.Visible = true;
+
+                    break;
+                case 5: // customize macro grams
+                    MacroRatLabel.Text = "";
+                    break;
+                case 6: // desired macro totals
+                    MacroRatLabel.Text = "";
+                    break;
+                case 7: // hand portions
+                    MacroRatLabel.Text = "";
+                    break;
+            }
         }
 
         private void MealsComboBox_SelectedIndexChanged(object sender, EventArgs e)
