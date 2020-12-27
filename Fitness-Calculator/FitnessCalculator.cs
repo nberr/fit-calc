@@ -76,8 +76,30 @@ namespace Fitness_Calculator
                         if (data.Page == i)
                         {
                             // select the font properties
-                            BaseFont bf = BaseFont.CreateFont(BaseFont.HELVETICA, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
-                            cb.SetColorFill(BaseColor.BLACK);
+                            BaseFont bf;
+
+                            try
+                            {
+                                string fontPath = "C:\\Program Files (x86)\\BWC\\Fitness-Calculator\\" + data.Font;
+                                bf = BaseFont.CreateFont(fontPath, BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
+                            }
+                            catch (Exception)
+                            {
+                                MessageBox.Show("Could not find font: " + data.Font + "\nMake sure font is in the program folder. Setting font to Helvetica.", "Font Missing");
+                                bf = BaseFont.CreateFont(BaseFont.HELVETICA, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
+                                cb.SetColorFill(BaseColor.BLACK);
+                            }
+
+                            try
+                            {
+                                cb.SetColorFill(new BaseColor(data.Color_r, data.Color_g, data.Color_b));
+                            }
+                            catch (Exception)
+                            {
+                                MessageBox.Show("Could not set color. Setting color to Black", "Invalid Color");
+                                cb.SetColorFill(BaseColor.BLACK);
+                            }
+
 
                             cb.SetFontAndSize(bf, data.Size);
 
@@ -174,6 +196,12 @@ namespace Fitness_Calculator
         private void WeightLossTextBox_TextChanged(object sender, EventArgs e)
         {
             cd.weight_loss = WeightLossTextBox.Text;
+
+            cd.weight_start = int.Parse(cd.weight);
+            cd.weight_end = int.Parse(cd.weight_loss);
+            cd.weight_diff = cd.weight_start - cd.weight_end;
+
+            // TODO: compute the weight loss timeline
         }
 
         private void GoalDateCalendar_DateChanged(object sender, DateRangeEventArgs e)
@@ -203,7 +231,7 @@ namespace Fitness_Calculator
                     PAM = 1.5 + ((DAL + 1) * inc);
                     break;
                 case 3:
-                    switch(DAL)
+                    switch (DAL)
                     {
                         case 0:
                             PAM = 1.7;
@@ -274,7 +302,7 @@ namespace Fitness_Calculator
             if (WPEComboBox.SelectedIndex > -1 && DALComboBox.SelectedIndex > -1)
             {
                 cd.PAM = CalculatePAM(WPEComboBox.SelectedIndex, DALComboBox.SelectedIndex);
-                
+
                 PAMUpDown.Value = (decimal)cd.PAM;
             }
 
@@ -310,26 +338,26 @@ namespace Fitness_Calculator
             if (WPEComboBox.SelectedIndex > -1 && DALComboBox.SelectedIndex > -1)
             {
                 cd.PAM = CalculatePAM(WPEComboBox.SelectedIndex, DALComboBox.SelectedIndex);
-                
+
                 PAMUpDown.Value = (decimal)cd.PAM;
             }
         }
 
         private void PAMCustom_CheckedChanged(object sender, EventArgs e)
         {
-           
+
             PAMUpDown.Enabled = true;
         }
 
 
         private void PAMEstimate_CheckedChanged(object sender, EventArgs e)
         {
-            
+
             PAMUpDown.Enabled = false;
             if (WPEComboBox.SelectedIndex > -1 && DALComboBox.SelectedIndex > -1)
             {
                 cd.PAM = CalculatePAM(WPEComboBox.SelectedIndex, DALComboBox.SelectedIndex);
-                
+
                 PAMUpDown.Value = (decimal)cd.PAM;
             }
             else
@@ -339,12 +367,12 @@ namespace Fitness_Calculator
             }
         }
 
-        
+
 
         private void PAMUpDown_ValueChanged(object sender, EventArgs e)
         {
             cd.PAM = (double)PAMUpDown.Value;
-            
+
         }
 
         private void MenuTab_SelectedIndexChanged(object sender, EventArgs e)
@@ -356,13 +384,51 @@ namespace Fitness_Calculator
         }
 
         // index 1 - anything, medditteranean, paleo,
-        private Dictionary<string, Dictionary<string,string>> MacroDisplay = new Dictionary<string,Dictionary<string, string>>();
+        private Dictionary<int, Dictionary<string, string>> MacroDisplay = new Dictionary<int, Dictionary<string, string>>();
+        private bool initialized = false;
         private void InitDictionary()
         {
-            Dictionary<string, string> AnythingOptions = new Dictionary<string, string>();
-            AnythingOptions.Add("balanced", "~30% protein, ~35% carbs, ~35% fats");
+            if (!initialized)
+            {
+                Dictionary<string, string> AnythingOptions = new Dictionary<string, string>();
+                AnythingOptions.Add("balanced", "~30% protein, ~35% carbs, ~35% fats");
+                AnythingOptions.Add("low-fat", "~30% protein, ~50% carbs, ~20% fats");
+                AnythingOptions.Add("low-carb", "~30% protein, ~20% carbs, ~50% fats");
+
+
+                Dictionary<string, string> MeditterraneanOptions = new Dictionary<string, string>();
+                MeditterraneanOptions.Add("balanced", "~30% protein, ~35% carbs, ~35% fats");
+                MeditterraneanOptions.Add("low-carb", "~30% protein, ~20% carbs, ~50% fats");
+
+                Dictionary<string, string> PaleoOptions = new Dictionary<string, string>();
+                PaleoOptions.Add("balanced", "~30% protein, ~35% carbs, ~35% fats");
+                PaleoOptions.Add("low-carb", "~30% protein, ~20% carbs, ~50% fats");
+
+                Dictionary<string, string> VegetarianOptions = new Dictionary<string, string>();
+                VegetarianOptions.Add("balanced", "~30% protein, ~35% carbs, ~35% fats");
+                VegetarianOptions.Add("low-fat", "~30% protein, ~50% carbs, ~20% fats");
+                VegetarianOptions.Add("low-carb", "~30% protein, ~20% carbs, ~50% fats");
+
+                Dictionary<string, string> KetoOptions = new Dictionary<string, string>();
+                KetoOptions.Add("very low-carb", "20% protein, 10% carbs, 70% fats");
+
+                Dictionary<string, string> VeganOptions = new Dictionary<string, string>();
+                VeganOptions.Add("balanced", "~30% protein, ~35% carbs, ~35% fats");
+                VeganOptions.Add("low-fat", "~30% protein, ~50% carbs, ~20% fats");
+                VeganOptions.Add("low-carb", "~30% protein, ~20% carbs, ~50% fats");
+                VeganOptions.Add("very low-fat", "20% protein, 70% carbs, 10% fats");
+
+
+                MacroDisplay.Add(0, AnythingOptions);
+                MacroDisplay.Add(1, MeditterraneanOptions);
+                MacroDisplay.Add(2, PaleoOptions);
+                MacroDisplay.Add(3, VegetarianOptions);
+                MacroDisplay.Add(4, KetoOptions);
+                MacroDisplay.Add(5, VeganOptions);
+
+                initialized = true;
+            }
         }
-        
 
         private void DietaryPrefComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -372,11 +438,12 @@ namespace Fitness_Calculator
             // vegetarian     - balanced, low-fat, low-carb, custom %, custom grams, macro totals, hand
             // keto           -               very low-carb, custom %, custom grams, macro totals, hand
             // fully plant    - balanced, low-fat, low-carb, very low-fat, custom %, custom grams, macro totals, hand
-
+            InitDictionary();
+            
 
             Dictionary<string, string> source = new Dictionary<string, string>();
             //MacroRatioComboBox.DataSource 
-       
+
             switch (DietaryPrefComboBox.SelectedIndex)
             {
                 case 0:
@@ -426,45 +493,97 @@ namespace Fitness_Calculator
             MacroRatioComboBox.DisplayMember = "Value";
             MacroRatioComboBox.ValueMember = "Key";
             MacroRatioComboBox.Enabled = true;
+            MacroRatioComboBox.SelectedIndex = -1;
+        }
+
+        private bool panels_init = false;
+        private void InitPanels()
+        {
+            if (!panels_init)
+            {
+                int x = 81, y = 105, width = 306, height = 192;
+                MacroPercentagePanel.SetBounds(x, y, width, height);
+                MacroGramsPanel.SetBounds(x, y, width, height);
+                MacroTotalsPanel.SetBounds(x, y, width, height);
+                HandPanel.SetBounds(x, y, width, height);
+            }
+
+            panels_init = true;
         }
 
         private void MacroRatioComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            switch (MacroRatioComboBox.SelectedIndex)
+            Dictionary<string, string> values = MacroDisplay[DietaryPrefComboBox.SelectedIndex];
+            InitPanels();
+            try
             {
-                case 0:
-                    MacroRatLabel.Text = "~30% protein, ~35% carbs, ~35% fats";
-                    break;
-                case 1:
-                    MacroRatLabel.Text = "~30% protein, ~50% carbs, ~20% fats";
-                    break;
-                case 2:
-                    MacroRatLabel.Text = "~30% protein, ~20% carbs, ~50% fats";
-                    break;
-                case 3:
-                    MacroRatLabel.Text = "~20% protein, ~70% carbs, ~10% fats";
-                    break;
-                case 4: // customize macro percentages
-                    MacroRatLabel.Text = "";
+                MacroRatLabel.Text = values[MacroRatioComboBox.SelectedValue.ToString()];
+            }
+            catch(Exception)
+            {
+                MacroRatLabel.Text = "";
+            }
 
-                    ProteinTrackBar.Visible = true;
-                    CarbTrackBar.Visible = true;
-                    FatTrackBar.Visible = true;
+            try
+            {
+                HandPanel.Visible = false;
+                MacroPercentagePanel.Visible = false;
+                MacroGramsPanel.Visible = false;
+                MacroTotalsPanel.Visible = false;
+                switch (MacroRatioComboBox.SelectedValue.ToString())
+                {
+                    case "custom %":
+                        MacroPercentagePanel.Visible = true;
+                        break;
+                    case "custom grams":
+                        MacroGramsPanel.Visible = true;
+                        break;
+                    case "macro totals":
+                        MacroTotalsPanel.Visible = true;
+                        break;
+                    case "hand":
+                        HandPanel.Visible = true;
+                        break;
+                    case null:
+                        break;
+                    default:
+                        // disable all the controls
+                        HandPanel.Visible = false;
+                        MacroPercentagePanel.Visible = false;
+                        MacroGramsPanel.Visible = false;
+                        MacroTotalsPanel.Visible = false;
 
-                    break;
-                case 5: // customize macro grams
-                    MacroRatLabel.Text = "";
-                    break;
-                case 6: // desired macro totals
-                    MacroRatLabel.Text = "";
-                    break;
-                case 7: // hand portions
-                    MacroRatLabel.Text = "";
-                    break;
+                        break;
+
+                }
+            }
+            catch(Exception)
+            {
+
             }
         }
 
         private void MealsComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cd.Meals = MealsComboBox.Text;
+        }
+
+        private void HPVeggieTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void HPProteinTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void HPCarbTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void HPFatTextBox_TextChanged(object sender, EventArgs e)
         {
 
         }

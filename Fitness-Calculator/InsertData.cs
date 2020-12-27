@@ -17,7 +17,9 @@ namespace Fitness_Calculator
         public int X;
         public int Y;
         public string Font;
-        public string Color;
+        public int Color_r;
+        public int Color_g;
+        public int Color_b;
         public int Size;
         public string Allignment;
 
