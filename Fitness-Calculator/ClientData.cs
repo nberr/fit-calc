@@ -15,9 +15,9 @@ namespace Fitness_Calculator
         public String age = "";
         public String sex = "Prefer not to say";
 
-        public int weight_start;
-        public int weight_end;
-        public int weight_diff;
+        public double weight_start;
+        public double weight_end;
+        public double weight_diff;
 
         public String weight_loss = "";
         public DateTime start_date;

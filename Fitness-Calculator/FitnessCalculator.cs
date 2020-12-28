@@ -193,6 +193,19 @@ namespace Fitness_Calculator
             cd.sex = "Female";
         }
 
+        private Tuple<double, double> GenerateWeeks(double fromFactor, double toFactor)
+        {
+            double to, from;
+
+            double average = (double)(cd.weight_end + cd.weight_start) / 2;
+            double diff = cd.weight_diff;
+            
+            to = Math.Round(diff / (fromFactor * average));
+            from = Math.Round(diff / (toFactor * average));
+
+            return new Tuple<double, double>(to, from);
+        }
+
         private void WeightLossTextBox_TextChanged(object sender, EventArgs e)
         {
             cd.weight_loss = WeightLossTextBox.Text;
@@ -201,7 +214,15 @@ namespace Fitness_Calculator
             cd.weight_end = int.Parse(cd.weight_loss);
             cd.weight_diff = cd.weight_start - cd.weight_end;
 
+            Tuple<double, double> comfortable = GenerateWeeks(0.0025, 0.0049);
+            Tuple<double, double> reasonable  = GenerateWeeks(0.005, 0.01);
+            Tuple<double, double> extreme     = GenerateWeeks(0.0101, 0.015);
+
             // TODO: compute the weight loss timeline
+
+            TimeFrameComfortableLabel.Text = "Comfortable: " + comfortable.Item2.ToString() + " to " + comfortable.Item1.ToString() + " weeks";
+            TimeFrameReasonableLabel.Text = "Reasonable: " + reasonable.Item2.ToString() + " to " + reasonable.Item1.ToString() + " weeks";
+            TimeFrameExtremeLabel.Text = "Extreme: " + extreme.Item2.ToString() + " to " + extreme.Item1.ToString() + " weeks";
         }
 
         private void GoalDateCalendar_DateChanged(object sender, DateRangeEventArgs e)
@@ -497,6 +518,9 @@ namespace Fitness_Calculator
         }
 
         private bool panels_init = false;
+
+        public object TimeFrameReasonable { get; private set; }
+
         private void InitPanels()
         {
             if (!panels_init)
@@ -584,6 +608,31 @@ namespace Fitness_Calculator
         }
 
         private void HPFatTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CarbRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FatRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void GramsProteinTextbox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void GramsCarbsTextbox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void GramsFatTextbox_TextChanged(object sender, EventArgs e)
         {
 
         }
