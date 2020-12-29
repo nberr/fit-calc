@@ -108,6 +108,9 @@
             this.FatRadioButton = new System.Windows.Forms.RadioButton();
             this.CarbRadioButton = new System.Windows.Forms.RadioButton();
             this.MacroPercentagePanel = new System.Windows.Forms.Panel();
+            this.label55 = new System.Windows.Forms.Label();
+            this.label54 = new System.Windows.Forms.Label();
+            this.label53 = new System.Windows.Forms.Label();
             this.label52 = new System.Windows.Forms.Label();
             this.label51 = new System.Windows.Forms.Label();
             this.label50 = new System.Windows.Forms.Label();
@@ -156,9 +159,6 @@
             this.label14 = new System.Windows.Forms.Label();
             this.GenerateReport = new System.Windows.Forms.Button();
             this.ClearAll = new System.Windows.Forms.Button();
-            this.label53 = new System.Windows.Forms.Label();
-            this.label54 = new System.Windows.Forms.Label();
-            this.label55 = new System.Windows.Forms.Label();
             this.MenuTab.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -214,6 +214,7 @@
             this.CoachNameTextBox.Size = new System.Drawing.Size(270, 20);
             this.CoachNameTextBox.TabIndex = 5;
             this.CoachNameTextBox.Text = "Michael Laub";
+            this.CoachNameTextBox.TextChanged += new System.EventHandler(this.CoachNameTextBox_TextChanged);
             // 
             // label22
             // 
@@ -1040,6 +1041,33 @@
             this.MacroPercentagePanel.TabIndex = 22;
             this.MacroPercentagePanel.Visible = false;
             // 
+            // label55
+            // 
+            this.label55.AutoSize = true;
+            this.label55.Location = new System.Drawing.Point(234, 132);
+            this.label55.Name = "label55";
+            this.label55.Size = new System.Drawing.Size(41, 13);
+            this.label55.TabIndex = 25;
+            this.label55.Text = "label55";
+            // 
+            // label54
+            // 
+            this.label54.AutoSize = true;
+            this.label54.Location = new System.Drawing.Point(234, 82);
+            this.label54.Name = "label54";
+            this.label54.Size = new System.Drawing.Size(41, 13);
+            this.label54.TabIndex = 24;
+            this.label54.Text = "label54";
+            // 
+            // label53
+            // 
+            this.label53.AutoSize = true;
+            this.label53.Location = new System.Drawing.Point(234, 28);
+            this.label53.Name = "label53";
+            this.label53.Size = new System.Drawing.Size(41, 13);
+            this.label53.TabIndex = 23;
+            this.label53.Text = "label53";
+            // 
             // label52
             // 
             this.label52.AutoSize = true;
@@ -1536,33 +1564,6 @@
             this.ClearAll.Text = "Clear All";
             this.ClearAll.UseVisualStyleBackColor = true;
             this.ClearAll.Click += new System.EventHandler(this.ClearAll_Click);
-            // 
-            // label53
-            // 
-            this.label53.AutoSize = true;
-            this.label53.Location = new System.Drawing.Point(234, 28);
-            this.label53.Name = "label53";
-            this.label53.Size = new System.Drawing.Size(41, 13);
-            this.label53.TabIndex = 23;
-            this.label53.Text = "label53";
-            // 
-            // label54
-            // 
-            this.label54.AutoSize = true;
-            this.label54.Location = new System.Drawing.Point(234, 82);
-            this.label54.Name = "label54";
-            this.label54.Size = new System.Drawing.Size(41, 13);
-            this.label54.TabIndex = 24;
-            this.label54.Text = "label54";
-            // 
-            // label55
-            // 
-            this.label55.AutoSize = true;
-            this.label55.Location = new System.Drawing.Point(234, 132);
-            this.label55.Name = "label55";
-            this.label55.Size = new System.Drawing.Size(41, 13);
-            this.label55.TabIndex = 25;
-            this.label55.Text = "label55";
             // 
             // FitnessCalculator
             // 

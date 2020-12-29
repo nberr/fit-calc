@@ -13,6 +13,7 @@ namespace Fitness_Calculator
     class InsertData
     {
         public string Keyword;
+        public string Text; // ignore this for most stuff, included for inserting headers
         public int Page;
         public int X;
         public int Y;

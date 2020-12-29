@@ -1,4 +1,5 @@
 ﻿using FileHelpers;
+using iText.Kernel.Pdf.Canvas;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using System;
@@ -123,14 +124,53 @@ namespace Fitness_Calculator
                                 case "height":
                                     cb.ShowTextAligned(1, cd.height_ft + "'" + cd.height_in + "\"", data.X, data.Y, 0);
                                     break;
+                                case "coach":
+                                    cb.ShowTextAligned(1, CoachNameTextBox.Text, data.X, data.Y, 0);
+                                    break;
+                                case "header":
+                                    cb.ShowTextAligned(2, data.Text + cd.name, data.X, data.Y, 0);
+                                    break;
                             }
                             cb.EndText();
                         }
+                    }
+
+                    if (i == 3)
+                    {
+                        // draw rectangle for activity level
+                        // TODO: adjust position
+                        // adjust the size and color depending on activity level
+                        cb.SetColorFill(BaseColor.CYAN);
+                        cb.Rectangle(150, 600, 250, 150);
+                        cb.FillStroke();
+
+                        // draw pi-graph for food
+                        int centerX = 300;
+                        int centerY = 200;
+                        int radius = 100;
+                        float fillPercent = 80;
+                        float circleThickness = 10;
+                        float arcThickness = 15;
+
+                        
+                        cb.SetColorFill(BaseColor.GRAY);
+                        cb.Circle(centerX, centerY, radius);
+                        cb.Fill();
+
+                        cb.SetColorFill(BaseColor.WHITE);
+                        cb.Circle(centerX, centerY, radius - circleThickness);
+                        cb.Fill();
+
+                        cb.SetColorFill(BaseColor.GREEN);
+                        cb.SetLineWidth(arcThickness);
+                        cb.Arc(centerX - radius + circleThickness / 2, centerY - radius + circleThickness / 2,
+                                centerX + radius - circleThickness / 2, centerY + radius - circleThickness / 2, 90, -fillPercent / 100 * 360.0);
+                        cb.Stroke();
+
 
                     }
                 }
 
-                // close the streams and voilá the file should be changed :)
                 document.Close();
                 fs.Close();
                 writer.Close();
@@ -208,21 +248,53 @@ namespace Fitness_Calculator
 
         private void WeightLossTextBox_TextChanged(object sender, EventArgs e)
         {
-            cd.weight_loss = WeightLossTextBox.Text;
+            try
+            {
+                cd.weight_loss = WeightLossTextBox.Text;
 
-            cd.weight_start = int.Parse(cd.weight);
-            cd.weight_end = int.Parse(cd.weight_loss);
-            cd.weight_diff = cd.weight_start - cd.weight_end;
+                cd.weight_start = int.Parse(cd.weight);
+                cd.weight_end = int.Parse(cd.weight_loss);
+                cd.weight_diff = cd.weight_start - cd.weight_end;
 
-            Tuple<double, double> comfortable = GenerateWeeks(0.0025, 0.0049);
-            Tuple<double, double> reasonable  = GenerateWeeks(0.005, 0.01);
-            Tuple<double, double> extreme     = GenerateWeeks(0.0101, 0.015);
+                Tuple<double, double> comfortable = GenerateWeeks(0.0025, 0.0049);
+                Tuple<double, double> reasonable = GenerateWeeks(0.005, 0.01);
+                Tuple<double, double> extreme = GenerateWeeks(0.0101, 0.015);
 
-            // TODO: compute the weight loss timeline
+                if (comfortable.Item1 >= 0 && comfortable.Item2 >= 0)
+                {
+                    TimeFrameComfortableLabel.Text = "Comfortable: " + comfortable.Item2.ToString() + " to " + comfortable.Item1.ToString() + " weeks";
+                }
+                else
+                {
+                    TimeFrameComfortableLabel.Text = "";
+                }
 
-            TimeFrameComfortableLabel.Text = "Comfortable: " + comfortable.Item2.ToString() + " to " + comfortable.Item1.ToString() + " weeks";
-            TimeFrameReasonableLabel.Text = "Reasonable: " + reasonable.Item2.ToString() + " to " + reasonable.Item1.ToString() + " weeks";
-            TimeFrameExtremeLabel.Text = "Extreme: " + extreme.Item2.ToString() + " to " + extreme.Item1.ToString() + " weeks";
+                if (reasonable.Item1 >= 0 && reasonable.Item2 >= 0)
+                {
+                    TimeFrameReasonableLabel.Text = "Reasonable: " + reasonable.Item2.ToString() + " to " + reasonable.Item1.ToString() + " weeks";
+                }
+                else
+                {
+                    TimeFrameReasonableLabel.Text = "";
+                }
+                
+                if (extreme.Item1 >= 0 && extreme.Item2 >= 0)
+                {
+                    TimeFrameExtremeLabel.Text = "Extreme: " + extreme.Item2.ToString() + " to " + extreme.Item1.ToString() + " weeks";
+                }
+                else
+                {
+                    TimeFrameExtremeLabel.Text = "";
+                }
+                
+            }
+            catch(Exception)
+            {
+                TimeFrameComfortableLabel.Text = "";
+                TimeFrameReasonableLabel.Text = "";
+                TimeFrameExtremeLabel.Text = "";
+            }
+            
         }
 
         private void GoalDateCalendar_DateChanged(object sender, DateRangeEventArgs e)
@@ -633,6 +705,11 @@ namespace Fitness_Calculator
         }
 
         private void GramsFatTextbox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CoachNameTextBox_TextChanged(object sender, EventArgs e)
         {
 
         }

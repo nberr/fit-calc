@@ -1,6 +1,26 @@
-keyword,page number,x coordinate,y coordinate,font,color,size,allignment
-name,1,105,340,Helvetica,Gray,36,left
-age,3,107,572,Helvetica,Black,10,center
-sex,3,240,572,Helvetica,Black,10,center
-weight,3,373,572,Helvetica,Black,10,center
-height,3,506,572,Helvetica,Black,10,center
+keyword,text,page number,x coordinate,y coordinate,font_file,color_r,color_g,color_b,size,allignment
+name,,1,105,340,BentonSans Regular_0.otf,50,48,48,36,left
+age,,3,107,572,BentonSans Regular_0.otf,50,48,48,10,center
+sex,,3,240,572,BentonSans Regular_0.otf,50,48,48,10,center
+weight,,3,373,572,BentonSans Regular_0.otf,50,48,48,10,center
+height,,3,506,572,BentonSans Regular_0.otf,50,48,48,10,center
+coach,,1,506,572,BentonSans Regular_0.otf,255,24,59,15,center
+header,Introduction for ,2,105,340,BentonSans Regular_0.otf,50,48,48,10,left
+header,Calculations for ,3,105,340,BentonSans Regular_0.otf,50,48,48,10,left
+header,Tracking with hands for ,8,105,340,BentonSans Regular_0.otf,50,48,48,10,left
+header,Tracking with hands for ,9,105,340,BentonSans Regular_0.otf,50,48,48,10,left
+header,Tracking with hands for ,10,105,340,BentonSans Regular_0.otf,50,48,48,10,left
+header,Tracking with hands for ,11,105,340,BentonSans Regular_0.otf,50,48,48,10,left
+header, What to eat for ,12,105,340,BentonSans Regular_0.otf,50,48,48,10,left
+header,Foods for ,13,105,340,BentonSans Regular_0.otf,50,48,48,10,left
+header,Foods for ,14,105,340,BentonSans Regular_0.otf,50,48,48,10,left
+header,Dieting tips for ,15,105,340,BentonSans Regular_0.otf,50,48,48,10,left
+header,Skills for ,16,105,340,BentonSans Regular_0.otf,50,48,48,10,left
+header,Signs of progress for ,17,105,340,BentonSans Regular_0.otf,50,48,48,10,left
+header,Making adjustments for ,18,105,340,BentonSans Regular_0.otf,50,48,48,10,left
+header,Making adjustments for ,19,105,340,BentonSans Regular_0.otf,50,48,48,10,left
+header,Dealing with hunger for,20,105,340,BentonSans Regular_0.otf,50,48,48,10,left
+header,Some tips for ,21,105,340,BentonSans Regular_0.otf,50,48,48,10,left
+header,Mindset changes for ,22,105,340,BentonSans Regular_0.otf,50,48,48,10,left
+header,Weight loss maintenance for ,23,105,340,BentonSans Regular_0.otf,50,48,48,10,left
+header,Final word for ,24,105,340,BentonSans Regular_0.otf,50,48,48,10,left
