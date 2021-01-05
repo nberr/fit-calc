@@ -1470,9 +1470,8 @@
             this.ResultAgeLabel.AutoSize = true;
             this.ResultAgeLabel.Location = new System.Drawing.Point(236, 23);
             this.ResultAgeLabel.Name = "ResultAgeLabel";
-            this.ResultAgeLabel.Size = new System.Drawing.Size(41, 13);
+            this.ResultAgeLabel.Size = new System.Drawing.Size(0, 13);
             this.ResultAgeLabel.TabIndex = 9;
-            this.ResultAgeLabel.Text = "label28";
             this.ResultAgeLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // label27

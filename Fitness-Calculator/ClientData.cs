@@ -23,7 +23,7 @@ namespace Fitness_Calculator
         public DateTime start_date;
         public DateTime end_date;
 
-        public double PAM = 0.0; //1.11-3
+        public double PAM = 1.11; //1.11-3
                                  // very light   1.4 1.5 1.6 1.7 - 0.1
                                  // light        1.5 1.6 1.7 1.8 - 0.1
                                  // moderate     1.6 1.7 1.8 1.9 - 0.1
@@ -33,6 +33,10 @@ namespace Fitness_Calculator
         public String Diet;
         public String Macro;
         public String Meals;
+
+        public float proteinPercent = 30;
+        public float carbPercent = 35;
+        public float fatPercent = 35;
 
     }
 }

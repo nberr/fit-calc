@@ -81,7 +81,7 @@ namespace Fitness_Calculator
 
                             try
                             {
-                                string fontPath = "C:\\Program Files (x86)\\BWC\\Fitness-Calculator\\" + data.Font;
+                                string fontPath = "C:\\Program Files (x86)\\BWC\\Fitness-Calculator\\Fonts\\" + data.Font;
                                 bf = BaseFont.CreateFont(fontPath, BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
                             }
                             catch (Exception)
@@ -140,31 +140,104 @@ namespace Fitness_Calculator
                         // draw rectangle for activity level
                         // TODO: adjust position
                         // adjust the size and color depending on activity level
-                        cb.SetColorFill(BaseColor.CYAN);
-                        cb.Rectangle(150, 600, 250, 150);
+                        double rectFill = (float)(cd.PAM - 1.11) / 1.89; // set this value based on the activity level number PAM?
+                        
+                       
+
+                        if (cd.PAM >= 2)
+                        {
+
+                            //cb.SetColorFill(BaseColor.BLACK);
+                            //cb.ShowTextAligned(0, "Highly Active", 167, 505, 0);
+
+                            cb.SetColorFill(new BaseColor(245, 130, 32));
+                        }
+                        else if (cd.PAM >= 1.7)
+                        {
+
+                            //cb.SetColorFill(BaseColor.BLACK);
+                            //cb.ShowTextAligned(0, "Moderately Active", 167, 505, 0);
+                            cb.SetColorFill(new BaseColor(254, 202, 10));
+                            
+                        }
+                        else
+                        {
+
+                            //cb.SetColorFill(BaseColor.BLACK);
+                            //cb.ShowTextAligned(0, "Lightly Active", 230, 505, 0);
+
+                            cb.SetColorFill(new BaseColor(34, 177, 76));
+                        }
+
+                        rectFill += 0.15;
+                        if (rectFill > 1.0)
+                        {
+                            rectFill = 1.0;
+                        }
+
+                        //cb.SetColorFill(BaseColor.CYAN); // set the color based on activity level as well
+                        cb.Rectangle(167, 498, rectFill * 398, 28);
                         cb.FillStroke();
 
+                        if (cd.PAM >= 2)
+                        {
+
+                            cb.SetColorFill(BaseColor.BLACK);
+                            cb.ShowTextAligned(0, "Highly Active", 180, 508, 0);
+
+                           
+                        }
+                        else if (cd.PAM >= 1.7)
+                        {
+
+                            cb.SetColorFill(BaseColor.BLACK);
+                            cb.ShowTextAligned(0, "Moderately Active", 180, 508, 0);
+
+                            
+                        }
+                        else
+                        {
+
+                            cb.SetColorFill(BaseColor.BLACK);
+                            cb.ShowTextAligned(0, "Lightly Active", 180, 508, 0);
+
+                            
+                        }
+
                         // draw pi-graph for food
-                        int centerX = 300;
-                        int centerY = 200;
-                        int radius = 100;
-                        float fillPercent = 80;
+                        int centerX = 370;
+                        int centerY = 233;
+                        int radius = 72;
+                        float startAng = 0;
+                        float fillPercent1 = cd.proteinPercent;
+                        float fillPercent2 = cd.carbPercent;
+                        float fillPercent3 = cd.fatPercent;
                         float circleThickness = 10;
-                        float arcThickness = 15;
+                        float arcThickness = 20;
 
-                        
-                        cb.SetColorFill(BaseColor.GRAY);
-                        cb.Circle(centerX, centerY, radius);
-                        cb.Fill();
-
-                        cb.SetColorFill(BaseColor.WHITE);
-                        cb.Circle(centerX, centerY, radius - circleThickness);
-                        cb.Fill();
-
-                        cb.SetColorFill(BaseColor.GREEN);
+                        // protein
+                        cb.SetColorStroke(new BaseColor(0, 186, 227));
                         cb.SetLineWidth(arcThickness);
                         cb.Arc(centerX - radius + circleThickness / 2, centerY - radius + circleThickness / 2,
-                                centerX + radius - circleThickness / 2, centerY + radius - circleThickness / 2, 90, -fillPercent / 100 * 360.0);
+                                centerX + radius - circleThickness / 2, centerY + radius - circleThickness / 2, startAng, -fillPercent1 / 100 * 360.0);
+                        cb.Stroke();
+
+                        startAng += (float)(-fillPercent1 / 100 * 360.0);
+
+                        // carbs
+                        cb.SetColorStroke(new BaseColor(245, 130, 32));
+                        cb.SetLineWidth(arcThickness);
+                        cb.Arc(centerX - radius + circleThickness / 2, centerY - radius + circleThickness / 2,
+                                centerX + radius - circleThickness / 2, centerY + radius - circleThickness / 2, startAng, -fillPercent2 / 100 * 360.0);
+                        cb.Stroke();
+
+                        startAng += (float)(-fillPercent2 / 100 * 360.0);
+
+                        // fat
+                        cb.SetColorStroke(new BaseColor(254, 202, 10));
+                        cb.SetLineWidth(arcThickness);
+                        cb.Arc(centerX - radius + circleThickness / 2, centerY - radius + circleThickness / 2,
+                                centerX + radius - circleThickness / 2, centerY + radius - circleThickness / 2, startAng, -fillPercent3 / 100 * 360.0);
                         cb.Stroke();
 
 
@@ -472,7 +545,25 @@ namespace Fitness_Calculator
         {
             if (MenuTab.SelectedIndex == 5)
             {
-                MessageBox.Show("generating results", "wait");
+                // set all the labels
+                ResultAgeLabel.Text = cd.age.ToString();
+                ResultCurrentWeightLabel.Text = cd.weight_start.ToString();
+                ResultTargetWeightLabel.Text = cd.weight_end.ToString();
+                ResultNumberDaysLabel.Text = (cd.end_date - cd.start_date).Days.ToString();
+                ResultEatingStyleLabel.Text = cd.Diet;
+
+                ResultMacroProteinLabel.Text = cd.proteinPercent.ToString();
+                ResultMacroCarbsLabel.Text = cd.carbPercent.ToString();
+                ResultMacroFatLabel.Text = cd.fatPercent.ToString();
+
+                ResultMaintenanceCLabel.Text = "1000";
+                ResultGoalCLabel.Text = "2000";
+                ResultCustomCLabel.Text = "3000";
+
+                PalmProteinLabel.Text = "1";
+                FistVeggieLabel.Text = "2";
+                HandfulCarbLabel.Text = "3";
+                ThumbFatsLabel.Text = "4";
             }
         }
 
@@ -536,7 +627,7 @@ namespace Fitness_Calculator
 
             Dictionary<string, string> source = new Dictionary<string, string>();
             //MacroRatioComboBox.DataSource 
-
+            cd.Diet = DietaryPrefComboBox.Text;
             switch (DietaryPrefComboBox.SelectedIndex)
             {
                 case 0:
