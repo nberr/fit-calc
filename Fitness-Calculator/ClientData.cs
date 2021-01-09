@@ -10,9 +10,12 @@ namespace Fitness_Calculator
     {
         public String name ="";
         public String weight = "";
+        public double weight_kg;
         public String height_ft = "";
         public String height_in = "";
+        public double height_cm;
         public String age = "";
+        public int age_num;
         public String sex = "Prefer not to say";
 
         public double weight_start;
@@ -30,9 +33,9 @@ namespace Fitness_Calculator
                                  // intense      1.7 1.8 1.9 2.1 - 0.1 and 0.2
                                  // very intense 1.9 2.0 2.2 2.3 - 0.1 and 0.2
 
-        public String Diet;
-        public String Macro;
-        public String Meals;
+        public String Diet = "";
+        public String Macro = "";
+        public String Meals = "";
 
         public float proteinPercent = 30;
         public float carbPercent = 35;

@@ -325,8 +325,8 @@ namespace Fitness_Calculator
             {
                 cd.weight_loss = WeightLossTextBox.Text;
 
-                cd.weight_start = int.Parse(cd.weight);
-                cd.weight_end = int.Parse(cd.weight_loss);
+                cd.weight_start = double.Parse(cd.weight);
+                cd.weight_end = double.Parse(cd.weight_loss);
                 cd.weight_diff = cd.weight_start - cd.weight_end;
 
                 Tuple<double, double> comfortable = GenerateWeeks(0.0025, 0.0049);
@@ -541,6 +541,39 @@ namespace Fitness_Calculator
 
         }
 
+        private double GetMaintenanceCalories()
+        {
+            double BMR = -1;
+            // convert values from string to numbers
+            try
+            {
+                cd.weight_kg = double.Parse(cd.weight) * 0.453592;
+                cd.height_cm = (double.Parse(cd.height_in) + (double.Parse(cd.height_ft) * 12)) * 2.54;
+                cd.age_num = int.Parse(cd.age);
+
+
+                if (cd.sex == "Male")
+                {
+                    BMR = ((10 * cd.weight_kg) + (6.25 * cd.height_cm) - (5 * cd.age_num) + 5) * cd.PAM;
+                }
+                else if (cd.sex == "Female")
+                {
+                    BMR = ((10 * cd.weight_kg) + (6.25 * cd.height_cm) - (5 * cd.age_num) - 161) * cd.PAM;
+                }
+                else
+                {
+                    return -1;
+                }
+
+            }
+            catch(Exception)
+            {
+                Console.WriteLine("Unable to convert numbers for calories");
+            }
+
+            return BMR;
+        }
+
         private void MenuTab_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (MenuTab.SelectedIndex == 5)
@@ -556,7 +589,7 @@ namespace Fitness_Calculator
                 ResultMacroCarbsLabel.Text = cd.carbPercent.ToString();
                 ResultMacroFatLabel.Text = cd.fatPercent.ToString();
 
-                ResultMaintenanceCLabel.Text = "1000";
+                ResultMaintenanceCLabel.Text = GetMaintenanceCalories().ToString();
                 ResultGoalCLabel.Text = "2000";
                 ResultCustomCLabel.Text = "3000";
 
@@ -748,6 +781,54 @@ namespace Fitness_Calculator
             {
 
             }
+
+            try
+            {
+                switch (MacroRatioComboBox.SelectedValue.ToString())
+                {
+                    case "balanced":
+                        cd.proteinPercent = 35;
+                        cd.carbPercent = 35;
+                        cd.fatPercent = 35;
+                        break;
+                    case "low-fat":
+                        cd.proteinPercent = 30;
+                        cd.carbPercent = 50;
+                        cd.fatPercent = 20;
+                        break;
+                    case "low-carb":
+                        cd.proteinPercent = 30;
+                        cd.carbPercent = 20;
+                        cd.fatPercent = 50;
+                        break;
+                    case "very low-fat":
+                        cd.proteinPercent = 20;
+                        cd.carbPercent = 70;
+                        cd.fatPercent = 10;
+                        break;
+                    case "very low-carb":
+                        cd.proteinPercent = 20;
+                        cd.carbPercent = 10;
+                        cd.fatPercent = 70;
+                        break;
+                    case "custom %":
+
+                        break;
+                    case "custom grams":
+
+                        break;
+                    case "macro totals":
+
+                        break;
+                    case "hand":
+
+                        break;
+                }
+            }
+            catch(Exception) {
+
+            }
+            
         }
 
         private void MealsComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -801,6 +882,11 @@ namespace Fitness_Calculator
         }
 
         private void CoachNameTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ProteinTrackBar_Scroll(object sender, EventArgs e)
         {
 
         }

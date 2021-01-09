@@ -840,7 +840,7 @@
             this.MacroGramsPanel.Controls.Add(this.CarbRadioButton);
             this.MacroGramsPanel.Location = new System.Drawing.Point(6, 79);
             this.MacroGramsPanel.Name = "MacroGramsPanel";
-            this.MacroGramsPanel.Size = new System.Drawing.Size(86, 70);
+            this.MacroGramsPanel.Size = new System.Drawing.Size(77, 70);
             this.MacroGramsPanel.TabIndex = 12;
             this.MacroGramsPanel.Visible = false;
             // 
@@ -1155,6 +1155,7 @@
             this.ProteinTrackBar.Name = "ProteinTrackBar";
             this.ProteinTrackBar.Size = new System.Drawing.Size(150, 45);
             this.ProteinTrackBar.TabIndex = 11;
+            this.ProteinTrackBar.Scroll += new System.EventHandler(this.ProteinTrackBar_Scroll);
             // 
             // CarbTrackBar
             // 
