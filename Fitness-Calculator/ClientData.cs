@@ -8,6 +8,10 @@ namespace Fitness_Calculator
 {
     class ClientData
     {
+        public int client_level = 1;
+        public double BMI = 0;
+        public double BFP = 0;
+
         public String name ="";
         public String weight = "";
         public double weight_kg;
@@ -23,7 +27,7 @@ namespace Fitness_Calculator
         public double weight_diff;
 
         public String weight_loss = "";
-        public DateTime start_date;
+        public DateTime start_date = DateTime.Today;
         public DateTime end_date;
 
         public double PAM = 1.11; //1.11-3
@@ -36,6 +40,9 @@ namespace Fitness_Calculator
         public String Diet = "";
         public String Macro = "";
         public String Meals = "";
+
+        public double BMR = -1;
+        public double RMR = -1;
 
         public float proteinPercent = 30;
         public float carbPercent = 35;

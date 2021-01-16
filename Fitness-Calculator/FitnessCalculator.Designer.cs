@@ -37,6 +37,19 @@
             this.label1 = new System.Windows.Forms.Label();
             this.FilenameTextBox = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.BodyFatGroup = new System.Windows.Forms.GroupBox();
+            this.BodyFatTextBox = new System.Windows.Forms.TextBox();
+            this.BodyFatEstimateRadioButton = new System.Windows.Forms.RadioButton();
+            this.BodyFatCustomRadioButton = new System.Windows.Forms.RadioButton();
+            this.label60 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.Level1RadioButton = new System.Windows.Forms.RadioButton();
+            this.Level23RadioButton = new System.Windows.Forms.RadioButton();
+            this.RMRGroup = new System.Windows.Forms.GroupBox();
+            this.RMRTextBox = new System.Windows.Forms.TextBox();
+            this.RMREstimateRadioButton = new System.Windows.Forms.RadioButton();
+            this.RMRCustomRadioButton = new System.Windows.Forms.RadioButton();
+            this.label61 = new System.Windows.Forms.Label();
             this.AgeTextBox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.FemaleRadioButton = new System.Windows.Forms.RadioButton();
@@ -50,12 +63,15 @@
             this.NameLabel = new System.Windows.Forms.Label();
             this.NameTextBox = new System.Windows.Forms.TextBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.label57 = new System.Windows.Forms.Label();
+            this.label56 = new System.Windows.Forms.Label();
+            this.DatePickerEnd = new System.Windows.Forms.DateTimePicker();
+            this.DatePickerStart = new System.Windows.Forms.DateTimePicker();
             this.TimeFrameExtremeLabel = new System.Windows.Forms.Label();
             this.TimeFrameReasonableLabel = new System.Windows.Forms.Label();
             this.TimeFrameComfortableLabel = new System.Windows.Forms.Label();
             this.TimeFrameTitleLabel = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.GoalDateCalendar = new System.Windows.Forms.MonthCalendar();
             this.WeightLossTextBox = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.tabPage4 = new System.Windows.Forms.TabPage();
@@ -159,9 +175,14 @@
             this.label14 = new System.Windows.Forms.Label();
             this.GenerateReport = new System.Windows.Forms.Button();
             this.ClearAll = new System.Windows.Forms.Button();
+            this.BodyFatCalculateButton = new System.Windows.Forms.Button();
+            this.RMRCalculateButton = new System.Windows.Forms.Button();
             this.MenuTab.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.BodyFatGroup.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.RMRGroup.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PAMUpDown)).BeginInit();
@@ -266,6 +287,9 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.BodyFatGroup);
+            this.tabPage2.Controls.Add(this.groupBox2);
+            this.tabPage2.Controls.Add(this.RMRGroup);
             this.tabPage2.Controls.Add(this.AgeTextBox);
             this.tabPage2.Controls.Add(this.label5);
             this.tabPage2.Controls.Add(this.FemaleRadioButton);
@@ -285,6 +309,155 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Details";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // BodyFatGroup
+            // 
+            this.BodyFatGroup.Controls.Add(this.BodyFatCalculateButton);
+            this.BodyFatGroup.Controls.Add(this.BodyFatTextBox);
+            this.BodyFatGroup.Controls.Add(this.BodyFatEstimateRadioButton);
+            this.BodyFatGroup.Controls.Add(this.BodyFatCustomRadioButton);
+            this.BodyFatGroup.Controls.Add(this.label60);
+            this.BodyFatGroup.Location = new System.Drawing.Point(133, 177);
+            this.BodyFatGroup.Name = "BodyFatGroup";
+            this.BodyFatGroup.Size = new System.Drawing.Size(292, 62);
+            this.BodyFatGroup.TabIndex = 25;
+            this.BodyFatGroup.TabStop = false;
+            this.BodyFatGroup.Text = "% Body Fat";
+            this.BodyFatGroup.Visible = false;
+            // 
+            // BodyFatTextBox
+            // 
+            this.BodyFatTextBox.Location = new System.Drawing.Point(6, 19);
+            this.BodyFatTextBox.Name = "BodyFatTextBox";
+            this.BodyFatTextBox.Size = new System.Drawing.Size(58, 20);
+            this.BodyFatTextBox.TabIndex = 13;
+            this.BodyFatTextBox.TextChanged += new System.EventHandler(this.BodyFatTextBox_TextChanged);
+            // 
+            // BodyFatEstimateRadioButton
+            // 
+            this.BodyFatEstimateRadioButton.AutoSize = true;
+            this.BodyFatEstimateRadioButton.Checked = true;
+            this.BodyFatEstimateRadioButton.Location = new System.Drawing.Point(70, 22);
+            this.BodyFatEstimateRadioButton.Name = "BodyFatEstimateRadioButton";
+            this.BodyFatEstimateRadioButton.Size = new System.Drawing.Size(65, 17);
+            this.BodyFatEstimateRadioButton.TabIndex = 15;
+            this.BodyFatEstimateRadioButton.TabStop = true;
+            this.BodyFatEstimateRadioButton.Text = "Estimate";
+            this.BodyFatEstimateRadioButton.UseVisualStyleBackColor = true;
+            this.BodyFatEstimateRadioButton.CheckedChanged += new System.EventHandler(this.BodyFatEstimateRadioButton_CheckedChanged);
+            // 
+            // BodyFatCustomRadioButton
+            // 
+            this.BodyFatCustomRadioButton.AutoSize = true;
+            this.BodyFatCustomRadioButton.Location = new System.Drawing.Point(137, 22);
+            this.BodyFatCustomRadioButton.Name = "BodyFatCustomRadioButton";
+            this.BodyFatCustomRadioButton.Size = new System.Drawing.Size(60, 17);
+            this.BodyFatCustomRadioButton.TabIndex = 16;
+            this.BodyFatCustomRadioButton.TabStop = true;
+            this.BodyFatCustomRadioButton.Text = "Custom";
+            this.BodyFatCustomRadioButton.UseVisualStyleBackColor = true;
+            this.BodyFatCustomRadioButton.CheckedChanged += new System.EventHandler(this.BodyFatCustomRadioButton_CheckedChanged);
+            // 
+            // label60
+            // 
+            this.label60.AutoSize = true;
+            this.label60.Location = new System.Drawing.Point(6, 42);
+            this.label60.Name = "label60";
+            this.label60.Size = new System.Drawing.Size(92, 13);
+            this.label60.TabIndex = 21;
+            this.label60.Text = "Valid range 3-65%";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.Level1RadioButton);
+            this.groupBox2.Controls.Add(this.Level23RadioButton);
+            this.groupBox2.Location = new System.Drawing.Point(136, 48);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(200, 42);
+            this.groupBox2.TabIndex = 24;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Client Level";
+            // 
+            // Level1RadioButton
+            // 
+            this.Level1RadioButton.AutoSize = true;
+            this.Level1RadioButton.Checked = true;
+            this.Level1RadioButton.Location = new System.Drawing.Point(6, 19);
+            this.Level1RadioButton.Name = "Level1RadioButton";
+            this.Level1RadioButton.Size = new System.Drawing.Size(60, 17);
+            this.Level1RadioButton.TabIndex = 11;
+            this.Level1RadioButton.TabStop = true;
+            this.Level1RadioButton.Text = "Level 1";
+            this.Level1RadioButton.UseVisualStyleBackColor = true;
+            this.Level1RadioButton.CheckedChanged += new System.EventHandler(this.Level1RadioButton_CheckedChanged);
+            // 
+            // Level23RadioButton
+            // 
+            this.Level23RadioButton.AutoSize = true;
+            this.Level23RadioButton.Location = new System.Drawing.Point(94, 19);
+            this.Level23RadioButton.Name = "Level23RadioButton";
+            this.Level23RadioButton.Size = new System.Drawing.Size(71, 17);
+            this.Level23RadioButton.TabIndex = 12;
+            this.Level23RadioButton.Text = "Level 2/3";
+            this.Level23RadioButton.UseVisualStyleBackColor = true;
+            this.Level23RadioButton.CheckedChanged += new System.EventHandler(this.Level23RadioButton_CheckedChanged);
+            // 
+            // RMRGroup
+            // 
+            this.RMRGroup.Controls.Add(this.RMRCalculateButton);
+            this.RMRGroup.Controls.Add(this.RMRTextBox);
+            this.RMRGroup.Controls.Add(this.RMREstimateRadioButton);
+            this.RMRGroup.Controls.Add(this.RMRCustomRadioButton);
+            this.RMRGroup.Controls.Add(this.label61);
+            this.RMRGroup.Location = new System.Drawing.Point(133, 245);
+            this.RMRGroup.Name = "RMRGroup";
+            this.RMRGroup.Size = new System.Drawing.Size(292, 80);
+            this.RMRGroup.TabIndex = 23;
+            this.RMRGroup.TabStop = false;
+            this.RMRGroup.Text = "Resting Metabolic Rate (Cal/day)";
+            this.RMRGroup.Visible = false;
+            // 
+            // RMRTextBox
+            // 
+            this.RMRTextBox.Location = new System.Drawing.Point(5, 17);
+            this.RMRTextBox.Name = "RMRTextBox";
+            this.RMRTextBox.Size = new System.Drawing.Size(58, 20);
+            this.RMRTextBox.TabIndex = 26;
+            this.RMRTextBox.TextChanged += new System.EventHandler(this.RMRTextBox_TextChanged);
+            // 
+            // RMREstimateRadioButton
+            // 
+            this.RMREstimateRadioButton.AutoSize = true;
+            this.RMREstimateRadioButton.Checked = true;
+            this.RMREstimateRadioButton.Location = new System.Drawing.Point(69, 20);
+            this.RMREstimateRadioButton.Name = "RMREstimateRadioButton";
+            this.RMREstimateRadioButton.Size = new System.Drawing.Size(65, 17);
+            this.RMREstimateRadioButton.TabIndex = 17;
+            this.RMREstimateRadioButton.TabStop = true;
+            this.RMREstimateRadioButton.Text = "Estimate";
+            this.RMREstimateRadioButton.UseVisualStyleBackColor = true;
+            this.RMREstimateRadioButton.CheckedChanged += new System.EventHandler(this.RMREstimateRadioButton_CheckedChanged);
+            // 
+            // RMRCustomRadioButton
+            // 
+            this.RMRCustomRadioButton.AutoSize = true;
+            this.RMRCustomRadioButton.Location = new System.Drawing.Point(137, 20);
+            this.RMRCustomRadioButton.Name = "RMRCustomRadioButton";
+            this.RMRCustomRadioButton.Size = new System.Drawing.Size(60, 17);
+            this.RMRCustomRadioButton.TabIndex = 18;
+            this.RMRCustomRadioButton.TabStop = true;
+            this.RMRCustomRadioButton.Text = "Custom";
+            this.RMRCustomRadioButton.UseVisualStyleBackColor = true;
+            this.RMRCustomRadioButton.CheckedChanged += new System.EventHandler(this.RMRCustomRadioButton_CheckedChanged);
+            // 
+            // label61
+            // 
+            this.label61.AutoSize = true;
+            this.label61.Location = new System.Drawing.Point(2, 40);
+            this.label61.Name = "label61";
+            this.label61.Size = new System.Drawing.Size(108, 13);
+            this.label61.TabIndex = 22;
+            this.label61.Text = "Valid range 500-5000";
             // 
             // AgeTextBox
             // 
@@ -402,12 +575,15 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.label57);
+            this.tabPage3.Controls.Add(this.label56);
+            this.tabPage3.Controls.Add(this.DatePickerEnd);
+            this.tabPage3.Controls.Add(this.DatePickerStart);
             this.tabPage3.Controls.Add(this.TimeFrameExtremeLabel);
             this.tabPage3.Controls.Add(this.TimeFrameReasonableLabel);
             this.tabPage3.Controls.Add(this.TimeFrameComfortableLabel);
             this.tabPage3.Controls.Add(this.TimeFrameTitleLabel);
             this.tabPage3.Controls.Add(this.label7);
-            this.tabPage3.Controls.Add(this.GoalDateCalendar);
             this.tabPage3.Controls.Add(this.WeightLossTextBox);
             this.tabPage3.Controls.Add(this.label6);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
@@ -418,10 +594,44 @@
             this.tabPage3.Text = "Goal";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // label57
+            // 
+            this.label57.AutoSize = true;
+            this.label57.Location = new System.Drawing.Point(56, 93);
+            this.label57.Name = "label57";
+            this.label57.Size = new System.Drawing.Size(50, 13);
+            this.label57.TabIndex = 11;
+            this.label57.Text = "End date";
+            // 
+            // label56
+            // 
+            this.label56.AutoSize = true;
+            this.label56.Location = new System.Drawing.Point(53, 67);
+            this.label56.Name = "label56";
+            this.label56.Size = new System.Drawing.Size(53, 13);
+            this.label56.TabIndex = 10;
+            this.label56.Text = "Start date";
+            // 
+            // DatePickerEnd
+            // 
+            this.DatePickerEnd.Location = new System.Drawing.Point(112, 93);
+            this.DatePickerEnd.Name = "DatePickerEnd";
+            this.DatePickerEnd.Size = new System.Drawing.Size(200, 20);
+            this.DatePickerEnd.TabIndex = 9;
+            this.DatePickerEnd.ValueChanged += new System.EventHandler(this.DatePickerEnd_ValueChanged);
+            // 
+            // DatePickerStart
+            // 
+            this.DatePickerStart.Location = new System.Drawing.Point(112, 67);
+            this.DatePickerStart.Name = "DatePickerStart";
+            this.DatePickerStart.Size = new System.Drawing.Size(200, 20);
+            this.DatePickerStart.TabIndex = 8;
+            this.DatePickerStart.ValueChanged += new System.EventHandler(this.DatePickerStart_ValueChanged);
+            // 
             // TimeFrameExtremeLabel
             // 
             this.TimeFrameExtremeLabel.AutoSize = true;
-            this.TimeFrameExtremeLabel.Location = new System.Drawing.Point(96, 298);
+            this.TimeFrameExtremeLabel.Location = new System.Drawing.Point(141, 298);
             this.TimeFrameExtremeLabel.Name = "TimeFrameExtremeLabel";
             this.TimeFrameExtremeLabel.Size = new System.Drawing.Size(0, 13);
             this.TimeFrameExtremeLabel.TabIndex = 7;
@@ -429,7 +639,7 @@
             // TimeFrameReasonableLabel
             // 
             this.TimeFrameReasonableLabel.AutoSize = true;
-            this.TimeFrameReasonableLabel.Location = new System.Drawing.Point(96, 285);
+            this.TimeFrameReasonableLabel.Location = new System.Drawing.Point(141, 285);
             this.TimeFrameReasonableLabel.Name = "TimeFrameReasonableLabel";
             this.TimeFrameReasonableLabel.Size = new System.Drawing.Size(0, 13);
             this.TimeFrameReasonableLabel.TabIndex = 6;
@@ -437,7 +647,7 @@
             // TimeFrameComfortableLabel
             // 
             this.TimeFrameComfortableLabel.AutoSize = true;
-            this.TimeFrameComfortableLabel.Location = new System.Drawing.Point(96, 272);
+            this.TimeFrameComfortableLabel.Location = new System.Drawing.Point(141, 272);
             this.TimeFrameComfortableLabel.Name = "TimeFrameComfortableLabel";
             this.TimeFrameComfortableLabel.Size = new System.Drawing.Size(0, 13);
             this.TimeFrameComfortableLabel.TabIndex = 5;
@@ -446,7 +656,7 @@
             // 
             this.TimeFrameTitleLabel.AutoSize = true;
             this.TimeFrameTitleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TimeFrameTitleLabel.Location = new System.Drawing.Point(96, 258);
+            this.TimeFrameTitleLabel.Location = new System.Drawing.Point(141, 258);
             this.TimeFrameTitleLabel.Name = "TimeFrameTitleLabel";
             this.TimeFrameTitleLabel.Size = new System.Drawing.Size(134, 13);
             this.TimeFrameTitleLabel.TabIndex = 4;
@@ -456,22 +666,15 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(141, 65);
+            this.label7.Location = new System.Drawing.Point(154, 42);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(130, 13);
             this.label7.TabIndex = 3;
             this.label7.Text = "Goal Completion Date";
             // 
-            // GoalDateCalendar
-            // 
-            this.GoalDateCalendar.Location = new System.Drawing.Point(99, 87);
-            this.GoalDateCalendar.Name = "GoalDateCalendar";
-            this.GoalDateCalendar.TabIndex = 2;
-            this.GoalDateCalendar.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.GoalDateCalendar_DateChanged);
-            // 
             // WeightLossTextBox
             // 
-            this.WeightLossTextBox.Location = new System.Drawing.Point(239, 32);
+            this.WeightLossTextBox.Location = new System.Drawing.Point(252, 9);
             this.WeightLossTextBox.Name = "WeightLossTextBox";
             this.WeightLossTextBox.Size = new System.Drawing.Size(44, 20);
             this.WeightLossTextBox.TabIndex = 1;
@@ -481,7 +684,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(128, 35);
+            this.label6.Location = new System.Drawing.Point(141, 12);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(105, 13);
             this.label6.TabIndex = 0;
@@ -1565,6 +1768,26 @@
             this.ClearAll.UseVisualStyleBackColor = true;
             this.ClearAll.Click += new System.EventHandler(this.ClearAll_Click);
             // 
+            // BodyFatCalculateButton
+            // 
+            this.BodyFatCalculateButton.Location = new System.Drawing.Point(203, 19);
+            this.BodyFatCalculateButton.Name = "BodyFatCalculateButton";
+            this.BodyFatCalculateButton.Size = new System.Drawing.Size(75, 23);
+            this.BodyFatCalculateButton.TabIndex = 26;
+            this.BodyFatCalculateButton.Text = "calculate";
+            this.BodyFatCalculateButton.UseVisualStyleBackColor = true;
+            this.BodyFatCalculateButton.Click += new System.EventHandler(this.BodyFatCalculateButton_Click);
+            // 
+            // RMRCalculateButton
+            // 
+            this.RMRCalculateButton.Location = new System.Drawing.Point(203, 17);
+            this.RMRCalculateButton.Name = "RMRCalculateButton";
+            this.RMRCalculateButton.Size = new System.Drawing.Size(75, 23);
+            this.RMRCalculateButton.TabIndex = 27;
+            this.RMRCalculateButton.Text = "calculate";
+            this.RMRCalculateButton.UseVisualStyleBackColor = true;
+            this.RMRCalculateButton.Click += new System.EventHandler(this.RMRCalculateButton_Click);
+            // 
             // FitnessCalculator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1582,6 +1805,12 @@
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            this.BodyFatGroup.ResumeLayout(false);
+            this.BodyFatGroup.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.RMRGroup.ResumeLayout(false);
+            this.RMRGroup.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             this.tabPage4.ResumeLayout(false);
@@ -1634,7 +1863,6 @@
         private System.Windows.Forms.Label TimeFrameComfortableLabel;
         private System.Windows.Forms.Label TimeFrameTitleLabel;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.MonthCalendar GoalDateCalendar;
         private System.Windows.Forms.TextBox WeightLossTextBox;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox WPEComboBox;
@@ -1739,6 +1967,25 @@
         private System.Windows.Forms.Label label55;
         private System.Windows.Forms.Label label54;
         private System.Windows.Forms.Label label53;
+        private System.Windows.Forms.DateTimePicker DatePickerStart;
+        private System.Windows.Forms.DateTimePicker DatePickerEnd;
+        private System.Windows.Forms.Label label57;
+        private System.Windows.Forms.Label label56;
+        private System.Windows.Forms.RadioButton Level23RadioButton;
+        private System.Windows.Forms.RadioButton Level1RadioButton;
+        private System.Windows.Forms.Label label61;
+        private System.Windows.Forms.Label label60;
+        private System.Windows.Forms.RadioButton RMRCustomRadioButton;
+        private System.Windows.Forms.RadioButton RMREstimateRadioButton;
+        private System.Windows.Forms.RadioButton BodyFatCustomRadioButton;
+        private System.Windows.Forms.RadioButton BodyFatEstimateRadioButton;
+        private System.Windows.Forms.TextBox BodyFatTextBox;
+        private System.Windows.Forms.GroupBox RMRGroup;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox BodyFatGroup;
+        private System.Windows.Forms.TextBox RMRTextBox;
+        private System.Windows.Forms.Button BodyFatCalculateButton;
+        private System.Windows.Forms.Button RMRCalculateButton;
     }
 }
 

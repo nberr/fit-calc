@@ -279,6 +279,7 @@ namespace Fitness_Calculator
         private void WeightTextBox_TextChanged(object sender, EventArgs e)
         {
             cd.weight = WeightTextBox.Text;
+            cd.weight_kg = double.Parse(cd.weight) * 0.453592;
         }
 
         private void HeightFtTextBox_TextChanged(object sender, EventArgs e)
@@ -289,11 +290,13 @@ namespace Fitness_Calculator
         private void HeightInTextBox_TextChanged(object sender, EventArgs e)
         {
             cd.height_in = HeightInTextBox.Text;
+            cd.height_cm = (double.Parse(cd.height_in) + (double.Parse(cd.height_ft) * 12)) * 2.54;
         }
 
         private void AgeTextBox_TextChanged(object sender, EventArgs e)
         {
             cd.age = AgeTextBox.Text;
+            cd.age_num = int.Parse(cd.age);
         }
 
         private void MaleRadioButton_CheckedChanged(object sender, EventArgs e)
@@ -374,6 +377,10 @@ namespace Fitness_Calculator
         {
             cd.start_date = e.Start;
             cd.end_date = e.End;
+
+            Console.WriteLine(e.Start);
+            Console.WriteLine(e.End);
+
         }
 
         private double CalculatePAM(int WPE, int DAL)
@@ -543,7 +550,7 @@ namespace Fitness_Calculator
 
         private double GetMaintenanceCalories()
         {
-            double BMR = -1;
+            
             // convert values from string to numbers
             try
             {
@@ -554,15 +561,17 @@ namespace Fitness_Calculator
 
                 if (cd.sex == "Male")
                 {
-                    BMR = ((10 * cd.weight_kg) + (6.25 * cd.height_cm) - (5 * cd.age_num) + 5) * cd.PAM;
+                    cd.RMR = ((10 * cd.weight_kg) + (6.25 * cd.height_cm) - (5 * cd.age_num) + 5);
+                    cd.BMR = cd.RMR * cd.PAM;
                 }
                 else if (cd.sex == "Female")
                 {
-                    BMR = ((10 * cd.weight_kg) + (6.25 * cd.height_cm) - (5 * cd.age_num) - 161) * cd.PAM;
+                    cd.RMR = ((10 * cd.weight_kg) + (6.25 * cd.height_cm) - (5 * cd.age_num) - 161);
+                    cd.BMR =  cd.RMR * cd.PAM;
                 }
                 else
                 {
-                    return -1;
+                    cd.BMR = -1;
                 }
 
             }
@@ -571,7 +580,7 @@ namespace Fitness_Calculator
                 Console.WriteLine("Unable to convert numbers for calories");
             }
 
-            return BMR;
+            return cd.BMR;
         }
 
         private void MenuTab_SelectedIndexChanged(object sender, EventArgs e)
@@ -590,7 +599,7 @@ namespace Fitness_Calculator
                 ResultMacroFatLabel.Text = cd.fatPercent.ToString();
 
                 ResultMaintenanceCLabel.Text = GetMaintenanceCalories().ToString();
-                ResultGoalCLabel.Text = "2000";
+                ResultGoalCLabel.Text = (GetMaintenanceCalories() * 0.75).ToString() ;
                 ResultCustomCLabel.Text = "3000";
 
                 PalmProteinLabel.Text = "1";
@@ -889,6 +898,116 @@ namespace Fitness_Calculator
         private void ProteinTrackBar_Scroll(object sender, EventArgs e)
         {
 
+        }
+
+        private void DatePickerStart_ValueChanged(object sender, EventArgs e)
+        {
+            cd.start_date = DatePickerStart.Value.Date;
+        }
+
+        private void DatePickerEnd_ValueChanged(object sender, EventArgs e)
+        {
+            cd.end_date = DatePickerEnd.Value.Date;
+        }
+
+        private void Level1RadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            cd.client_level = 1;
+
+            BodyFatGroup.Visible = false;
+            RMRGroup.Visible = false;
+        }
+
+        private void Level23RadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            cd.client_level = 2;
+
+            BodyFatGroup.Visible = true;
+            RMRGroup.Visible = true;
+        }
+
+        private void BodyFatEstimateRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BodyFatCustomRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void RMREstimateRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            RMRTextBox.Enabled = false;
+        }
+
+        private void RMRCustomRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            RMRTextBox.Enabled = true;
+        }
+
+        private void BodyFatTextBox_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void RMRTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+   
+        private double GetBMI()
+        {
+            return cd.weight_kg / Math.Pow(cd.height_cm/100, 2);
+        }
+
+        private void BodyFatCalculateButton_Click(object sender, EventArgs e)
+        {
+            if (cd.sex == "Male")
+            {
+                cd.BFP = (0.14 * cd.age_num + 37.310000000000002 * Math.Log(GetBMI()) - 103.94);
+            }
+            else
+            {
+                cd.BFP = (0.14 * cd.age_num + 39.960000000000001 * Math.Log(GetBMI()) - 102.01000000000001);
+            }
+
+            cd.BFP = (cd.BFP < 0.0) ? 0.0 : cd.BFP;
+            cd.BFP = (cd.BFP > 60.0) ? 60.0 : cd.BFP;
+
+            cd.BFP = Math.Round(cd.BFP, 1);
+            
+            if (BodyFatEstimateRadioButton.Checked)
+            {
+                BodyFatTextBox.Text = cd.BFP.ToString();
+            }
+            else
+            {
+
+            }
+        }
+
+        private void RMRCalculateButton_Click(object sender, EventArgs e)
+        {
+            if (cd.sex == "Male")
+            {
+                cd.RMR = (9.99 * cd.weight_kg + 625.0 * cd.height_cm / 100.0 - 4.92 * cd.age_num + 5.0);
+            }
+            else
+            {
+                cd.RMR = (9.99 * cd.weight_kg + 625.0 * cd.height_cm / 100.0 - 4.92 * cd.age_num - 161.0);
+            }
+
+            cd.RMR = Math.Round(cd.RMR);
+
+            if (RMREstimateRadioButton.Checked)
+            {
+                RMRTextBox.Text = cd.RMR.ToString();
+            }
+            else
+            {
+
+            }
         }
     }
 }
