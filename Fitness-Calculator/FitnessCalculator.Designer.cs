@@ -38,6 +38,7 @@
             this.FilenameTextBox = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.BodyFatGroup = new System.Windows.Forms.GroupBox();
+            this.BodyFatCalculateButton = new System.Windows.Forms.Button();
             this.BodyFatTextBox = new System.Windows.Forms.TextBox();
             this.BodyFatEstimateRadioButton = new System.Windows.Forms.RadioButton();
             this.BodyFatCustomRadioButton = new System.Windows.Forms.RadioButton();
@@ -46,6 +47,7 @@
             this.Level1RadioButton = new System.Windows.Forms.RadioButton();
             this.Level23RadioButton = new System.Windows.Forms.RadioButton();
             this.RMRGroup = new System.Windows.Forms.GroupBox();
+            this.RMRCalculateButton = new System.Windows.Forms.Button();
             this.RMRTextBox = new System.Windows.Forms.TextBox();
             this.RMREstimateRadioButton = new System.Windows.Forms.RadioButton();
             this.RMRCustomRadioButton = new System.Windows.Forms.RadioButton();
@@ -149,7 +151,7 @@
             this.label19 = new System.Windows.Forms.Label();
             this.ResultsTabPage = new System.Windows.Forms.TabPage();
             this.ResultCustomCLabel = new System.Windows.Forms.Label();
-            this.label28 = new System.Windows.Forms.Label();
+            this.CustomCalLabel = new System.Windows.Forms.Label();
             this.ResultGoalCLabel = new System.Windows.Forms.Label();
             this.ResultMaintenanceCLabel = new System.Windows.Forms.Label();
             this.ThumbFatsLabel = new System.Windows.Forms.Label();
@@ -175,8 +177,6 @@
             this.label14 = new System.Windows.Forms.Label();
             this.GenerateReport = new System.Windows.Forms.Button();
             this.ClearAll = new System.Windows.Forms.Button();
-            this.BodyFatCalculateButton = new System.Windows.Forms.Button();
-            this.RMRCalculateButton = new System.Windows.Forms.Button();
             this.MenuTab.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -325,8 +325,19 @@
             this.BodyFatGroup.Text = "% Body Fat";
             this.BodyFatGroup.Visible = false;
             // 
+            // BodyFatCalculateButton
+            // 
+            this.BodyFatCalculateButton.Location = new System.Drawing.Point(203, 19);
+            this.BodyFatCalculateButton.Name = "BodyFatCalculateButton";
+            this.BodyFatCalculateButton.Size = new System.Drawing.Size(75, 23);
+            this.BodyFatCalculateButton.TabIndex = 26;
+            this.BodyFatCalculateButton.Text = "calculate";
+            this.BodyFatCalculateButton.UseVisualStyleBackColor = true;
+            this.BodyFatCalculateButton.Click += new System.EventHandler(this.BodyFatCalculateButton_Click);
+            // 
             // BodyFatTextBox
             // 
+            this.BodyFatTextBox.Enabled = false;
             this.BodyFatTextBox.Location = new System.Drawing.Point(6, 19);
             this.BodyFatTextBox.Name = "BodyFatTextBox";
             this.BodyFatTextBox.Size = new System.Drawing.Size(58, 20);
@@ -417,8 +428,19 @@
             this.RMRGroup.Text = "Resting Metabolic Rate (Cal/day)";
             this.RMRGroup.Visible = false;
             // 
+            // RMRCalculateButton
+            // 
+            this.RMRCalculateButton.Location = new System.Drawing.Point(203, 17);
+            this.RMRCalculateButton.Name = "RMRCalculateButton";
+            this.RMRCalculateButton.Size = new System.Drawing.Size(75, 23);
+            this.RMRCalculateButton.TabIndex = 27;
+            this.RMRCalculateButton.Text = "calculate";
+            this.RMRCalculateButton.UseVisualStyleBackColor = true;
+            this.RMRCalculateButton.Click += new System.EventHandler(this.RMRCalculateButton_Click);
+            // 
             // RMRTextBox
             // 
+            this.RMRTextBox.Enabled = false;
             this.RMRTextBox.Location = new System.Drawing.Point(5, 17);
             this.RMRTextBox.Name = "RMRTextBox";
             this.RMRTextBox.Size = new System.Drawing.Size(58, 20);
@@ -1476,7 +1498,7 @@
             // ResultsTabPage
             // 
             this.ResultsTabPage.Controls.Add(this.ResultCustomCLabel);
-            this.ResultsTabPage.Controls.Add(this.label28);
+            this.ResultsTabPage.Controls.Add(this.CustomCalLabel);
             this.ResultsTabPage.Controls.Add(this.ResultGoalCLabel);
             this.ResultsTabPage.Controls.Add(this.ResultMaintenanceCLabel);
             this.ResultsTabPage.Controls.Add(this.ThumbFatsLabel);
@@ -1518,15 +1540,16 @@
             this.ResultCustomCLabel.TabIndex = 26;
             this.ResultCustomCLabel.Text = "label29";
             // 
-            // label28
+            // CustomCalLabel
             // 
-            this.label28.AutoSize = true;
-            this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label28.Location = new System.Drawing.Point(72, 198);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(97, 13);
-            this.label28.TabIndex = 25;
-            this.label28.Text = "Custom Calories";
+            this.CustomCalLabel.AutoSize = true;
+            this.CustomCalLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CustomCalLabel.Location = new System.Drawing.Point(72, 198);
+            this.CustomCalLabel.Name = "CustomCalLabel";
+            this.CustomCalLabel.Size = new System.Drawing.Size(97, 13);
+            this.CustomCalLabel.TabIndex = 25;
+            this.CustomCalLabel.Text = "Custom Calories";
+            this.CustomCalLabel.Visible = false;
             // 
             // ResultGoalCLabel
             // 
@@ -1768,26 +1791,6 @@
             this.ClearAll.UseVisualStyleBackColor = true;
             this.ClearAll.Click += new System.EventHandler(this.ClearAll_Click);
             // 
-            // BodyFatCalculateButton
-            // 
-            this.BodyFatCalculateButton.Location = new System.Drawing.Point(203, 19);
-            this.BodyFatCalculateButton.Name = "BodyFatCalculateButton";
-            this.BodyFatCalculateButton.Size = new System.Drawing.Size(75, 23);
-            this.BodyFatCalculateButton.TabIndex = 26;
-            this.BodyFatCalculateButton.Text = "calculate";
-            this.BodyFatCalculateButton.UseVisualStyleBackColor = true;
-            this.BodyFatCalculateButton.Click += new System.EventHandler(this.BodyFatCalculateButton_Click);
-            // 
-            // RMRCalculateButton
-            // 
-            this.RMRCalculateButton.Location = new System.Drawing.Point(203, 17);
-            this.RMRCalculateButton.Name = "RMRCalculateButton";
-            this.RMRCalculateButton.Size = new System.Drawing.Size(75, 23);
-            this.RMRCalculateButton.TabIndex = 27;
-            this.RMRCalculateButton.Text = "calculate";
-            this.RMRCalculateButton.UseVisualStyleBackColor = true;
-            this.RMRCalculateButton.Click += new System.EventHandler(this.RMRCalculateButton_Click);
-            // 
             // FitnessCalculator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1843,7 +1846,6 @@
         private System.Windows.Forms.TextBox FilenameTextBox;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.Button GenerateReport;
         private System.Windows.Forms.Button ClearAll;
         private System.Windows.Forms.Label NameLabel;
@@ -1904,7 +1906,7 @@
         private System.Windows.Forms.Label ResultGoalCLabel;
         private System.Windows.Forms.Label ResultMaintenanceCLabel;
         private System.Windows.Forms.Label ResultCustomCLabel;
-        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Label CustomCalLabel;
         private System.Windows.Forms.NumericUpDown PAMUpDown;
         private System.Windows.Forms.TabPage tabPage5;
         private System.Windows.Forms.Panel MacroTotalsPanel;
@@ -1986,6 +1988,7 @@
         private System.Windows.Forms.TextBox RMRTextBox;
         private System.Windows.Forms.Button BodyFatCalculateButton;
         private System.Windows.Forms.Button RMRCalculateButton;
+        private System.Windows.Forms.TabPage tabPage4;
     }
 }
 

@@ -562,16 +562,31 @@ namespace Fitness_Calculator
                 if (cd.sex == "Male")
                 {
                     cd.RMR = ((10 * cd.weight_kg) + (6.25 * cd.height_cm) - (5 * cd.age_num) + 5);
-                    cd.BMR = cd.RMR * cd.PAM;
+                    //cd.BMR = cd.RMR * cd.PAM;
                 }
                 else if (cd.sex == "Female")
                 {
                     cd.RMR = ((10 * cd.weight_kg) + (6.25 * cd.height_cm) - (5 * cd.age_num) - 161);
-                    cd.BMR =  cd.RMR * cd.PAM;
+                    //cd.BMR =  cd.RMR * cd.PAM;
                 }
                 else
                 {
                     cd.BMR = -1;
+                }
+
+                if (cd.client_level == 1)
+                {
+                    cd.TDEE = cd.RMR * cd.PAM;
+                }
+                else if (cd.client_level == 2)
+                {
+                    cd.FFM = cd.weight_kg * ((100 - cd.BFP) / 100);
+                    cd.BMR = 370 + (21.6 * cd.FFM);
+                    cd.TDEE = cd.BMR * cd.PAM;
+                }
+                else
+                {
+                    Console.WriteLine("Something went wrong");
                 }
 
             }
@@ -580,17 +595,30 @@ namespace Fitness_Calculator
                 Console.WriteLine("Unable to convert numbers for calories");
             }
 
-            return cd.BMR;
+            return cd.TDEE;
         }
 
         private void MenuTab_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (MenuTab.SelectedIndex == 2)
+            {
+                if (cd.client_level == 1)
+                {
+
+                }
+                else if (cd.client_level == 2)
+                {
+                    cd.FFM = cd.weight_kg * ((100 - cd.BFP) / 100);
+                    cd.BMR = 370 + (21.6 * cd.FFM);
+                }
+            }
             if (MenuTab.SelectedIndex == 5)
             {
                 // set all the labels
                 ResultAgeLabel.Text = cd.age.ToString();
                 ResultCurrentWeightLabel.Text = cd.weight_start.ToString();
                 ResultTargetWeightLabel.Text = cd.weight_end.ToString();
+                int days = (cd.end_date - cd.start_date).Days;
                 ResultNumberDaysLabel.Text = (cd.end_date - cd.start_date).Days.ToString();
                 ResultEatingStyleLabel.Text = cd.Diet;
 
@@ -599,8 +627,22 @@ namespace Fitness_Calculator
                 ResultMacroFatLabel.Text = cd.fatPercent.ToString();
 
                 ResultMaintenanceCLabel.Text = GetMaintenanceCalories().ToString();
-                ResultGoalCLabel.Text = (GetMaintenanceCalories() * 0.75).ToString() ;
-                ResultCustomCLabel.Text = "3000";
+                ResultGoalCLabel.Text = (2200 - (500 * cd.weight_diff / days / 7)).ToString();
+
+                Console.WriteLine(cd.Macro);
+                if ((cd.Macro == "hand") || (cd.Macro == "macro totals"))
+                {
+                    CustomCalLabel.Visible = true;
+                    ResultCustomCLabel.Visible = true;
+
+                    // calculate custom calories
+                    ResultCustomCLabel.Text = "500";
+                }
+                else
+                {
+                    CustomCalLabel.Visible = false;
+                    ResultCustomCLabel.Visible = false;
+                }
 
                 PalmProteinLabel.Text = "1";
                 FistVeggieLabel.Text = "2";
@@ -785,6 +827,7 @@ namespace Fitness_Calculator
                         break;
 
                 }
+                cd.Macro = MacroRatioComboBox.SelectedValue.ToString();
             }
             catch(Exception)
             {
@@ -833,11 +876,14 @@ namespace Fitness_Calculator
 
                         break;
                 }
+                cd.Macro = MacroRatioComboBox.SelectedValue.ToString();
             }
             catch(Exception) {
 
             }
             
+
+
         }
 
         private void MealsComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -928,12 +974,12 @@ namespace Fitness_Calculator
 
         private void BodyFatEstimateRadioButton_CheckedChanged(object sender, EventArgs e)
         {
-
+            BodyFatTextBox.Enabled = false;
         }
 
         private void BodyFatCustomRadioButton_CheckedChanged(object sender, EventArgs e)
         {
-
+            BodyFatTextBox.Enabled = true;
         }
 
         private void RMREstimateRadioButton_CheckedChanged(object sender, EventArgs e)

@@ -48,5 +48,9 @@ namespace Fitness_Calculator
         public float carbPercent = 35;
         public float fatPercent = 35;
 
+        public double TDEE = 0;
+        public double MaintenanceCal = 0;
+        public double FFM = 0;
+
     }
 }
