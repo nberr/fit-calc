@@ -562,6 +562,7 @@ namespace Fitness_Calculator
                 if (cd.sex == "Male")
                 {
                     cd.RMR = ((10 * cd.weight_kg) + (6.25 * cd.height_cm) - (5 * cd.age_num) + 5);
+                    Console.WriteLine(cd.RMR);
                     //cd.BMR = cd.RMR * cd.PAM;
                 }
                 else if (cd.sex == "Female")
@@ -622,12 +623,12 @@ namespace Fitness_Calculator
                 ResultNumberDaysLabel.Text = (cd.end_date - cd.start_date).Days.ToString();
                 ResultEatingStyleLabel.Text = cd.Diet;
 
-                ResultMacroProteinLabel.Text = cd.proteinPercent.ToString();
-                ResultMacroCarbsLabel.Text = cd.carbPercent.ToString();
-                ResultMacroFatLabel.Text = cd.fatPercent.ToString();
+                ResultMacroProteinLabel.Text = cd.proteinPercent.ToString() + " % protein";
+                ResultMacroCarbsLabel.Text = cd.carbPercent.ToString() + " % carbs";
+                ResultMacroFatLabel.Text = cd.fatPercent.ToString() + " % fat";
 
-                ResultMaintenanceCLabel.Text = GetMaintenanceCalories().ToString();
-                ResultGoalCLabel.Text = (2200 - (500 * cd.weight_diff / days / 7)).ToString();
+                ResultMaintenanceCLabel.Text = (Math.Round(GetMaintenanceCalories() / 5.0) * 5).ToString();
+                ResultGoalCLabel.Text = (Math.Round((GetMaintenanceCalories() - 100 - (500 * (cd.weight_diff / (days / 7)))) / 5.0) * 5).ToString();
 
                 Console.WriteLine(cd.Macro);
                 if ((cd.Macro == "hand") || (cd.Macro == "macro totals"))
