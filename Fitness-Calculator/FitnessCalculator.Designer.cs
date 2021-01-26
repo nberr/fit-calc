@@ -177,6 +177,10 @@
             this.label14 = new System.Windows.Forms.Label();
             this.GenerateReport = new System.Windows.Forms.Button();
             this.ClearAll = new System.Windows.Forms.Button();
+            this.ProteinPerMealLabel = new System.Windows.Forms.Label();
+            this.CarbsPerMealLabel = new System.Windows.Forms.Label();
+            this.VeggiesPerMealLabel = new System.Windows.Forms.Label();
+            this.FatsPerMealLabel = new System.Windows.Forms.Label();
             this.MenuTab.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -1497,6 +1501,10 @@
             // 
             // ResultsTabPage
             // 
+            this.ResultsTabPage.Controls.Add(this.FatsPerMealLabel);
+            this.ResultsTabPage.Controls.Add(this.VeggiesPerMealLabel);
+            this.ResultsTabPage.Controls.Add(this.CarbsPerMealLabel);
+            this.ResultsTabPage.Controls.Add(this.ProteinPerMealLabel);
             this.ResultsTabPage.Controls.Add(this.ResultCustomCLabel);
             this.ResultsTabPage.Controls.Add(this.CustomCalLabel);
             this.ResultsTabPage.Controls.Add(this.ResultGoalCLabel);
@@ -1572,7 +1580,7 @@
             // ThumbFatsLabel
             // 
             this.ThumbFatsLabel.AutoSize = true;
-            this.ThumbFatsLabel.Location = new System.Drawing.Point(278, 225);
+            this.ThumbFatsLabel.Location = new System.Drawing.Point(72, 262);
             this.ThumbFatsLabel.Name = "ThumbFatsLabel";
             this.ThumbFatsLabel.Size = new System.Drawing.Size(41, 13);
             this.ThumbFatsLabel.TabIndex = 22;
@@ -1581,7 +1589,7 @@
             // HandfulCarbLabel
             // 
             this.HandfulCarbLabel.AutoSize = true;
-            this.HandfulCarbLabel.Location = new System.Drawing.Point(216, 225);
+            this.HandfulCarbLabel.Location = new System.Drawing.Point(72, 249);
             this.HandfulCarbLabel.Name = "HandfulCarbLabel";
             this.HandfulCarbLabel.Size = new System.Drawing.Size(41, 13);
             this.HandfulCarbLabel.TabIndex = 21;
@@ -1590,7 +1598,7 @@
             // FistVeggieLabel
             // 
             this.FistVeggieLabel.AutoSize = true;
-            this.FistVeggieLabel.Location = new System.Drawing.Point(149, 225);
+            this.FistVeggieLabel.Location = new System.Drawing.Point(72, 236);
             this.FistVeggieLabel.Name = "FistVeggieLabel";
             this.FistVeggieLabel.Size = new System.Drawing.Size(41, 13);
             this.FistVeggieLabel.TabIndex = 20;
@@ -1599,7 +1607,7 @@
             // PalmProteinLabel
             // 
             this.PalmProteinLabel.AutoSize = true;
-            this.PalmProteinLabel.Location = new System.Drawing.Point(73, 225);
+            this.PalmProteinLabel.Location = new System.Drawing.Point(72, 223);
             this.PalmProteinLabel.Name = "PalmProteinLabel";
             this.PalmProteinLabel.Size = new System.Drawing.Size(41, 13);
             this.PalmProteinLabel.TabIndex = 19;
@@ -1790,6 +1798,42 @@
             this.ClearAll.Text = "Clear All";
             this.ClearAll.UseVisualStyleBackColor = true;
             this.ClearAll.Click += new System.EventHandler(this.ClearAll_Click);
+            // 
+            // ProteinPerMealLabel
+            // 
+            this.ProteinPerMealLabel.AutoSize = true;
+            this.ProteinPerMealLabel.Location = new System.Drawing.Point(265, 223);
+            this.ProteinPerMealLabel.Name = "ProteinPerMealLabel";
+            this.ProteinPerMealLabel.Size = new System.Drawing.Size(41, 13);
+            this.ProteinPerMealLabel.TabIndex = 27;
+            this.ProteinPerMealLabel.Text = "label28";
+            // 
+            // CarbsPerMealLabel
+            // 
+            this.CarbsPerMealLabel.AutoSize = true;
+            this.CarbsPerMealLabel.Location = new System.Drawing.Point(265, 249);
+            this.CarbsPerMealLabel.Name = "CarbsPerMealLabel";
+            this.CarbsPerMealLabel.Size = new System.Drawing.Size(41, 13);
+            this.CarbsPerMealLabel.TabIndex = 28;
+            this.CarbsPerMealLabel.Text = "label58";
+            // 
+            // VeggiesPerMealLabel
+            // 
+            this.VeggiesPerMealLabel.AutoSize = true;
+            this.VeggiesPerMealLabel.Location = new System.Drawing.Point(265, 236);
+            this.VeggiesPerMealLabel.Name = "VeggiesPerMealLabel";
+            this.VeggiesPerMealLabel.Size = new System.Drawing.Size(41, 13);
+            this.VeggiesPerMealLabel.TabIndex = 29;
+            this.VeggiesPerMealLabel.Text = "label59";
+            // 
+            // FatsPerMealLabel
+            // 
+            this.FatsPerMealLabel.AutoSize = true;
+            this.FatsPerMealLabel.Location = new System.Drawing.Point(265, 262);
+            this.FatsPerMealLabel.Name = "FatsPerMealLabel";
+            this.FatsPerMealLabel.Size = new System.Drawing.Size(41, 13);
+            this.FatsPerMealLabel.TabIndex = 30;
+            this.FatsPerMealLabel.Text = "label62";
             // 
             // FitnessCalculator
             // 
@@ -1989,6 +2033,10 @@
         private System.Windows.Forms.Button BodyFatCalculateButton;
         private System.Windows.Forms.Button RMRCalculateButton;
         private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.Label FatsPerMealLabel;
+        private System.Windows.Forms.Label VeggiesPerMealLabel;
+        private System.Windows.Forms.Label CarbsPerMealLabel;
+        private System.Windows.Forms.Label ProteinPerMealLabel;
     }
 }
 
