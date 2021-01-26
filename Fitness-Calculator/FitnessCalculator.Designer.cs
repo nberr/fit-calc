@@ -972,7 +972,7 @@
             this.HandPanel.Controls.Add(this.HPCarbTextBox);
             this.HandPanel.Controls.Add(this.HandVeggiesLabel);
             this.HandPanel.Controls.Add(this.HPFatTextBox);
-            this.HandPanel.Location = new System.Drawing.Point(162, 44);
+            this.HandPanel.Location = new System.Drawing.Point(393, 48);
             this.HandPanel.Name = "HandPanel";
             this.HandPanel.Size = new System.Drawing.Size(244, 151);
             this.HandPanel.TabIndex = 0;

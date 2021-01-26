@@ -90,14 +90,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Fitness-Calculator.exe" size="64992">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Fitness-Calculator.exe" size="65504">
       <assemblyIdentity name="Fitness-Calculator" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>o1Ok9hxkiLiRv0+teJX+X3Tv767XIfTTGToQr18jQvg=</dsig:DigestValue>
+        <dsig:DigestValue>6w44Sf+r0vt0lCpy0qPUW+OqVDzyKZ8od4U+ChABYH0=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

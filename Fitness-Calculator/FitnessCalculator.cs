@@ -695,6 +695,48 @@ namespace Fitness_Calculator
                     // veggies = n/a
                     // carbs = 50g -> 1 unit and 120 cals
                     // fats = 11g -> 1 unit 110 cals
+
+                    double protein_macro = double.Parse(MacroProteinTextBox.Text) * 4;
+                    double carbs_macro = double.Parse(MacroCarbsTextBox.Text) * 4;
+                    double fats_macro = double.Parse(MacroFatTextBox.Text) * 9;
+
+                    double macro_total = protein_macro + carbs_macro + fats_macro;
+
+                    cd.proteinPercent = (float)Math.Round((protein_macro / macro_total) * 100);
+                    cd.carbPercent = (float)Math.Round((carbs_macro / macro_total) * 100);
+                    cd.fatPercent = (float)Math.Round((fats_macro / macro_total) * 100);
+
+                    ResultMacroProteinLabel.Text = cd.proteinPercent.ToString() + " % protein";
+                    ResultMacroCarbsLabel.Text = cd.carbPercent.ToString() + " % carbs";
+                    ResultMacroFatLabel.Text = cd.fatPercent.ToString() + " % fat";
+
+                    // calculate hands
+                    double cals = macro_total;
+
+                    double protein_amount = cals * (cd.proteinPercent / 100);
+                    double the_rest = cals - protein_amount;
+
+                    double veggies_amount = the_rest * .10;
+
+                    double carbs_amount = ((cd.carbPercent - 5) / 100) * the_rest;
+                    double fat_amount = ((cd.fatPercent - 5) / 100) * the_rest;
+                    
+                    protein_amount = (protein_amount / 4) / 30;
+                    carbs_amount = (carbs_amount / 4) / 25;
+                    fat_amount = ((fat_amount / 9) / 11) + 1;
+                    veggies_amount = veggies_amount / 25;
+
+                    PalmProteinLabel.Text = Math.Round(protein_amount) + " palm(s) of protein";
+                    FistVeggieLabel.Text = Math.Round(veggies_amount) + " fist(s) of veggies";
+                    HandfulCarbLabel.Text = Math.Round(carbs_amount) + " cupped handful(s) of carbs";
+                    ThumbFatsLabel.Text = Math.Round(fat_amount) + " thumb-sized portion(s) of healthy fat";
+
+                    ProteinPerMealLabel.Text = Math.Round(protein_amount) / double.Parse(cd.Meals) + " palms per meal";
+                    VeggiesPerMealLabel.Text = Math.Round(veggies_amount) / double.Parse(cd.Meals) + " fists per meal";
+                    CarbsPerMealLabel.Text = Math.Round(carbs_amount) / double.Parse(cd.Meals) + " handfuls per meal";
+                    FatsPerMealLabel.Text = Math.Round(fat_amount) / double.Parse(cd.Meals) + " thumbs per meal";
+
+                    ResultCustomCLabel.Text = macro_total.ToString();
                 }
                 else if (cd.Macro == "custom %")
                 {
