@@ -952,6 +952,7 @@ namespace Fitness_Calculator
                         MacroGramsPanel.Visible = true;
                         int days = (cd.end_date - cd.start_date).Days;
                         CustomGramsCalories.Text = (Math.Round((GetMaintenanceCalories() - 200 - (500 * (cd.weight_diff / (days / 7)))) / 5.0) * 5).ToString();
+                        CustomGramsRemaining.Text = cd.DietCalories.ToString();
                        
                         break;
                     case "macro totals":
@@ -1071,20 +1072,72 @@ namespace Fitness_Calculator
             GramsCarbsTextbox.Text = "";
         }
 
+        private double proteinCals = 0;
+        private double carbsCals = 0;
+        private double fatsCals = 0;
+
         private void GramsProteinTextbox_TextChanged(object sender, EventArgs e)
         {
-            // TODO: calculate CustomGramsRemaining
             try
             {
                 ProteinGramTotal.Text = (double.Parse(GramsProteinTextbox.Text) * double.Parse(cd.weight)).ToString() + " g";
                 ProteinGramPercent.Text = Math.Round(((double.Parse(GramsProteinTextbox.Text) * double.Parse(cd.weight)) * 4) / cd.DietCalories * 100).ToString();
-                CustomGramsRemaining.Text = "";
+                proteinCals = double.Parse(GramsProteinTextbox.Text) * double.Parse(cd.weight) * 4;
+
+                if (CarbRadioButton.Checked)
+                {
+                    // try to calculate fat
+                    double remains = cd.DietCalories - proteinCals - carbsCals - fatsCals;
+
+                    if (remains > 0)
+                    {
+                        fatsCals = remains;
+                        FatsGramTotal.Text = fatsCals / 9 + " g";
+                        FatsGramPercent.Text = (fatsCals / cd.DietCalories).ToString();
+                    }
+                    else
+                    {
+                        // not enough to have fats
+                        FatsGramTotal.Text = "";
+                        FatsGramPercent.Text = "";
+                        fatsCals = 0;
+                    }
+
+                }
+                else if (FatRadioButton.Checked)
+                {
+                    // try to calculate carbs
+                    double remains = cd.DietCalories - proteinCals - carbsCals - fatsCals;
+
+                    if (remains > 0)
+                    {
+                        carbsCals = remains;
+                        CarbsGramTotal.Text = carbsCals / 4 + " g";
+                        CarbsGramPercent.Text = (carbsCals / cd.DietCalories).ToString();
+
+                    }
+                    else
+                    {
+                        // not enough to have carbs
+                        CarbsGramTotal.Text = "";
+                        CarbsGramPercent.Text = "";
+                        carbsCals = 0;
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Error in diet tab");
+                }
+
+                CustomGramsRemaining.Text = (cd.DietCalories - proteinCals - carbsCals - fatsCals).ToString();
             }
             catch(Exception)
             {
                 ProteinGramTotal.Text = "";
                 ProteinGramPercent.Text = "";
+                proteinCals = 0;
             }
+            CustomGramsRemaining.Text = (cd.DietCalories - proteinCals - carbsCals - fatsCals).ToString();
         }
 
         private void GramsCarbsTextbox_TextChanged(object sender, EventArgs e)
@@ -1092,14 +1145,40 @@ namespace Fitness_Calculator
             // TODO: calculate CustomGramsRemaining
             try
             {
-                CarbsGramTotal.Text = (double.Parse(GramsCarbsTextbox.Text) * double.Parse(cd.weight)).ToString() + " g";
-                CarbsGramPercent.Text = Math.Round(((double.Parse(GramsCarbsTextbox.Text) * double.Parse(cd.weight)) * 4) / cd.DietCalories * 100).ToString();
-                CarbsGramPercent.Text = "";
+                if (CarbRadioButton.Checked)
+                {
+                    CarbsGramTotal.Text = (double.Parse(GramsCarbsTextbox.Text) * double.Parse(cd.weight)).ToString() + " g";
+                    CarbsGramPercent.Text = Math.Round(((double.Parse(GramsCarbsTextbox.Text) * double.Parse(cd.weight)) * 4) / cd.DietCalories * 100).ToString();
+                    carbsCals = (double.Parse(GramsCarbsTextbox.Text) * double.Parse(cd.weight)) * 4;
+                }
+                else
+                {
+                    // try to calculate fat
+                    double remains = cd.DietCalories - proteinCals - carbsCals - fatsCals;
+
+                    if (remains > 0)
+                    {
+                        fatsCals = remains;
+                        FatsGramTotal.Text = fatsCals / 9 + " g";
+                        FatsGramPercent.Text = (fatsCals / cd.DietCalories).ToString();
+                    }
+                    else
+                    {
+                        // not enough to have fats
+                        FatsGramTotal.Text = "";
+                        FatsGramPercent.Text = "";
+                        fatsCals = 0;
+                    }
+                }
+
             }
             catch (Exception)
             {
                 CarbsGramTotal.Text = "";
+                CarbsGramPercent.Text = "";
+                carbsCals = 0;
             }
+            CustomGramsRemaining.Text = (cd.DietCalories - proteinCals - carbsCals - fatsCals).ToString();
         }
 
         private void GramsFatTextbox_TextChanged(object sender, EventArgs e)
@@ -1107,14 +1186,40 @@ namespace Fitness_Calculator
             // TODO: calculate CustomGramsRemaining
             try
             {
-                FatsGramTotal.Text = (double.Parse(GramsFatTextbox.Text) * double.Parse(cd.weight)).ToString() + " g";
-                FatsGramPercent.Text = Math.Round(((double.Parse(GramsFatTextbox.Text) * double.Parse(cd.weight)) * 9) / cd.DietCalories * 100).ToString();
-                FatsGramPercent.Text = "";
+                if (FatRadioButton.Checked)
+                {
+                    FatsGramTotal.Text = (double.Parse(GramsFatTextbox.Text) * double.Parse(cd.weight)).ToString() + " g";
+                    FatsGramPercent.Text = Math.Round(((double.Parse(GramsFatTextbox.Text) * double.Parse(cd.weight)) * 9) / cd.DietCalories * 100).ToString();
+                    fatsCals = double.Parse(GramsFatTextbox.Text) * double.Parse(cd.weight) * 9;
+                }
+                else
+                {
+                    // try to calculate carbs
+                    double remains = cd.DietCalories - proteinCals - carbsCals - fatsCals;
+
+                    if (remains > 0)
+                    {
+                        carbsCals = remains;
+                        CarbsGramTotal.Text = carbsCals / 4 + " g";
+                        CarbsGramPercent.Text = (carbsCals / cd.DietCalories).ToString();
+
+                    }
+                    else
+                    {
+                        // not enough to have carbs
+                        CarbsGramTotal.Text = "";
+                        CarbsGramPercent.Text = "";
+                        carbsCals = 0;
+                    }
+                }
             }
             catch (Exception)
             {
                 FatsGramTotal.Text = "";
+                FatsGramPercent.Text = "";
+                fatsCals = 0;
             }
+            CustomGramsRemaining.Text = (cd.DietCalories - proteinCals - carbsCals - fatsCals).ToString();
         }
 
         private void CoachNameTextBox_TextChanged(object sender, EventArgs e)
