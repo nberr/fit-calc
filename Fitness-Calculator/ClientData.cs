@@ -51,6 +51,7 @@ namespace Fitness_Calculator
         public double TDEE = 0;
         public double MaintenanceCal = 0;
         public double FFM = 0;
+        public double DietCalories = 0;
 
     }
 }

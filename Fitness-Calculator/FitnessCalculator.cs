@@ -628,8 +628,16 @@ namespace Fitness_Calculator
                     cd.FFM = cd.weight_kg * ((100 - cd.BFP) / 100);
                     cd.BMR = 370 + (21.6 * cd.FFM);
                 }
+
+
             }
-            if (MenuTab.SelectedIndex == 5)
+            else if (MenuTab.SelectedIndex == 4)
+            {
+                cd.TDEE = Math.Round(GetMaintenanceCalories() / 5.0) * 5;
+                int days = (cd.end_date - cd.start_date).Days;
+                cd.DietCalories = (Math.Round((GetMaintenanceCalories() - 200 - (500 * (cd.weight_diff / (days / 7)))) / 5.0) * 5);
+            }
+            else if (MenuTab.SelectedIndex == 5)
             {
                 // set all the labels
                 ResultAgeLabel.Text = cd.age.ToString();
@@ -745,8 +753,8 @@ namespace Fitness_Calculator
                 }
                 else if (cd.Macro == "custom grams")
                 {
-                    CustomCalLabel.Visible = true;
-                    ResultCustomCLabel.Visible = true;
+                    //CustomCalLabel.Visible = true;
+                    //ResultCustomCLabel.Visible = true;
                 }
                 else
                 {
@@ -942,6 +950,9 @@ namespace Fitness_Calculator
                         break;
                     case "custom grams":
                         MacroGramsPanel.Visible = true;
+                        int days = (cd.end_date - cd.start_date).Days;
+                        CustomGramsCalories.Text = (Math.Round((GetMaintenanceCalories() - 200 - (500 * (cd.weight_diff / (days / 7)))) / 5.0) * 5).ToString();
+                       
                         break;
                     case "macro totals":
                         MacroTotalsPanel.Visible = true;
@@ -1048,27 +1059,62 @@ namespace Fitness_Calculator
 
         private void CarbRadioButton_CheckedChanged(object sender, EventArgs e)
         {
-
+            GramsFatTextbox.Enabled = false;
+            GramsCarbsTextbox.Enabled = true;
+            GramsFatTextbox.Text = "";
         }
 
         private void FatRadioButton_CheckedChanged(object sender, EventArgs e)
         {
-
+            GramsFatTextbox.Enabled = true;
+            GramsCarbsTextbox.Enabled = false;
+            GramsCarbsTextbox.Text = "";
         }
 
         private void GramsProteinTextbox_TextChanged(object sender, EventArgs e)
         {
-
+            // TODO: calculate CustomGramsRemaining
+            try
+            {
+                ProteinGramTotal.Text = (double.Parse(GramsProteinTextbox.Text) * double.Parse(cd.weight)).ToString() + " g";
+                ProteinGramPercent.Text = Math.Round(((double.Parse(GramsProteinTextbox.Text) * double.Parse(cd.weight)) * 4) / cd.DietCalories * 100).ToString();
+                CustomGramsRemaining.Text = "";
+            }
+            catch(Exception)
+            {
+                ProteinGramTotal.Text = "";
+                ProteinGramPercent.Text = "";
+            }
         }
 
         private void GramsCarbsTextbox_TextChanged(object sender, EventArgs e)
         {
-
+            // TODO: calculate CustomGramsRemaining
+            try
+            {
+                CarbsGramTotal.Text = (double.Parse(GramsCarbsTextbox.Text) * double.Parse(cd.weight)).ToString() + " g";
+                CarbsGramPercent.Text = Math.Round(((double.Parse(GramsCarbsTextbox.Text) * double.Parse(cd.weight)) * 4) / cd.DietCalories * 100).ToString();
+                CarbsGramPercent.Text = "";
+            }
+            catch (Exception)
+            {
+                CarbsGramTotal.Text = "";
+            }
         }
 
         private void GramsFatTextbox_TextChanged(object sender, EventArgs e)
         {
-
+            // TODO: calculate CustomGramsRemaining
+            try
+            {
+                FatsGramTotal.Text = (double.Parse(GramsFatTextbox.Text) * double.Parse(cd.weight)).ToString() + " g";
+                FatsGramPercent.Text = Math.Round(((double.Parse(GramsFatTextbox.Text) * double.Parse(cd.weight)) * 9) / cd.DietCalories * 100).ToString();
+                FatsGramPercent.Text = "";
+            }
+            catch (Exception)
+            {
+                FatsGramTotal.Text = "";
+            }
         }
 
         private void CoachNameTextBox_TextChanged(object sender, EventArgs e)
@@ -1189,6 +1235,11 @@ namespace Fitness_Calculator
             {
 
             }
+        }
+
+        private void CalculateGramsButton_Click(object sender, EventArgs e)
+        {
+            // calculate remaining calories and percentages
         }
     }
 }
