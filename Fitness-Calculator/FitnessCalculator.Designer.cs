@@ -90,6 +90,9 @@
             this.WPEComboBox = new System.Windows.Forms.ComboBox();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.MacroTotalsPanel = new System.Windows.Forms.Panel();
+            this.label39 = new System.Windows.Forms.Label();
+            this.label38 = new System.Windows.Forms.Label();
+            this.label35 = new System.Windows.Forms.Label();
             this.MacroFatTextBox = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -107,6 +110,10 @@
             this.HPFatTextBox = new System.Windows.Forms.TextBox();
             this.MacroGramsPanel = new System.Windows.Forms.Panel();
             this.CalculateGramsButton = new System.Windows.Forms.Button();
+            this.label34 = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
+            this.label33 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
             this.CustomGramsRemaining = new System.Windows.Forms.Label();
             this.CustomGramsCalories = new System.Windows.Forms.Label();
             this.label41 = new System.Windows.Forms.Label();
@@ -117,7 +124,6 @@
             this.CarbsGramTotal = new System.Windows.Forms.Label();
             this.ProteinGramPercent = new System.Windows.Forms.Label();
             this.ProteinGramTotal = new System.Windows.Forms.Label();
-            this.label31 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
@@ -182,7 +188,6 @@
             this.label14 = new System.Windows.Forms.Label();
             this.GenerateReport = new System.Windows.Forms.Button();
             this.ClearAll = new System.Windows.Forms.Button();
-            this.label28 = new System.Windows.Forms.Label();
             this.MenuTab.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -904,29 +909,59 @@
             // 
             // MacroTotalsPanel
             // 
+            this.MacroTotalsPanel.Controls.Add(this.label39);
+            this.MacroTotalsPanel.Controls.Add(this.label38);
+            this.MacroTotalsPanel.Controls.Add(this.label35);
             this.MacroTotalsPanel.Controls.Add(this.MacroFatTextBox);
             this.MacroTotalsPanel.Controls.Add(this.label10);
             this.MacroTotalsPanel.Controls.Add(this.label9);
             this.MacroTotalsPanel.Controls.Add(this.label8);
             this.MacroTotalsPanel.Controls.Add(this.MacroCarbsTextBox);
             this.MacroTotalsPanel.Controls.Add(this.MacroProteinTextBox);
-            this.MacroTotalsPanel.Location = new System.Drawing.Point(339, 198);
+            this.MacroTotalsPanel.Location = new System.Drawing.Point(354, 158);
             this.MacroTotalsPanel.Name = "MacroTotalsPanel";
             this.MacroTotalsPanel.Size = new System.Drawing.Size(240, 113);
             this.MacroTotalsPanel.TabIndex = 0;
             this.MacroTotalsPanel.Visible = false;
             // 
+            // label39
+            // 
+            this.label39.AutoSize = true;
+            this.label39.Location = new System.Drawing.Point(161, 85);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(49, 13);
+            this.label39.TabIndex = 28;
+            this.label39.Text = "25-500 g";
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.Location = new System.Drawing.Point(96, 85);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(49, 13);
+            this.label38.TabIndex = 27;
+            this.label38.Text = "0-1000 g";
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Location = new System.Drawing.Point(29, 85);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(49, 13);
+            this.label35.TabIndex = 26;
+            this.label35.Text = "50-500 g";
+            // 
             // MacroFatTextBox
             // 
-            this.MacroFatTextBox.Location = new System.Drawing.Point(140, 62);
+            this.MacroFatTextBox.Location = new System.Drawing.Point(164, 62);
             this.MacroFatTextBox.Name = "MacroFatTextBox";
-            this.MacroFatTextBox.Size = new System.Drawing.Size(34, 20);
+            this.MacroFatTextBox.Size = new System.Drawing.Size(46, 20);
             this.MacroFatTextBox.TabIndex = 2;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(143, 44);
+            this.label10.Location = new System.Drawing.Point(177, 44);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(22, 13);
             this.label10.TabIndex = 25;
@@ -935,7 +970,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(103, 44);
+            this.label9.Location = new System.Drawing.Point(105, 44);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(34, 13);
             this.label9.TabIndex = 24;
@@ -944,7 +979,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(56, 44);
+            this.label8.Location = new System.Drawing.Point(36, 44);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(40, 13);
             this.label8.TabIndex = 23;
@@ -952,16 +987,16 @@
             // 
             // MacroCarbsTextBox
             // 
-            this.MacroCarbsTextBox.Location = new System.Drawing.Point(101, 62);
+            this.MacroCarbsTextBox.Location = new System.Drawing.Point(99, 62);
             this.MacroCarbsTextBox.Name = "MacroCarbsTextBox";
-            this.MacroCarbsTextBox.Size = new System.Drawing.Size(33, 20);
+            this.MacroCarbsTextBox.Size = new System.Drawing.Size(46, 20);
             this.MacroCarbsTextBox.TabIndex = 1;
             // 
             // MacroProteinTextBox
             // 
-            this.MacroProteinTextBox.Location = new System.Drawing.Point(59, 62);
+            this.MacroProteinTextBox.Location = new System.Drawing.Point(32, 62);
             this.MacroProteinTextBox.Name = "MacroProteinTextBox";
-            this.MacroProteinTextBox.Size = new System.Drawing.Size(32, 20);
+            this.MacroProteinTextBox.Size = new System.Drawing.Size(46, 20);
             this.MacroProteinTextBox.TabIndex = 0;
             // 
             // HandPanel
@@ -1050,8 +1085,11 @@
             // 
             // MacroGramsPanel
             // 
-            this.MacroGramsPanel.Controls.Add(this.label28);
             this.MacroGramsPanel.Controls.Add(this.CalculateGramsButton);
+            this.MacroGramsPanel.Controls.Add(this.label34);
+            this.MacroGramsPanel.Controls.Add(this.label31);
+            this.MacroGramsPanel.Controls.Add(this.label33);
+            this.MacroGramsPanel.Controls.Add(this.label28);
             this.MacroGramsPanel.Controls.Add(this.CustomGramsRemaining);
             this.MacroGramsPanel.Controls.Add(this.CustomGramsCalories);
             this.MacroGramsPanel.Controls.Add(this.label41);
@@ -1062,7 +1100,6 @@
             this.MacroGramsPanel.Controls.Add(this.CarbsGramTotal);
             this.MacroGramsPanel.Controls.Add(this.ProteinGramPercent);
             this.MacroGramsPanel.Controls.Add(this.ProteinGramTotal);
-            this.MacroGramsPanel.Controls.Add(this.label31);
             this.MacroGramsPanel.Controls.Add(this.label30);
             this.MacroGramsPanel.Controls.Add(this.label29);
             this.MacroGramsPanel.Controls.Add(this.label11);
@@ -1071,7 +1108,7 @@
             this.MacroGramsPanel.Controls.Add(this.GramsProteinTextbox);
             this.MacroGramsPanel.Controls.Add(this.FatRadioButton);
             this.MacroGramsPanel.Controls.Add(this.CarbRadioButton);
-            this.MacroGramsPanel.Location = new System.Drawing.Point(6, 79);
+            this.MacroGramsPanel.Location = new System.Drawing.Point(51, 72);
             this.MacroGramsPanel.Name = "MacroGramsPanel";
             this.MacroGramsPanel.Size = new System.Drawing.Size(297, 218);
             this.MacroGramsPanel.TabIndex = 12;
@@ -1079,13 +1116,49 @@
             // 
             // CalculateGramsButton
             // 
-            this.CalculateGramsButton.Location = new System.Drawing.Point(110, 158);
+            this.CalculateGramsButton.Location = new System.Drawing.Point(92, 155);
             this.CalculateGramsButton.Name = "CalculateGramsButton";
             this.CalculateGramsButton.Size = new System.Drawing.Size(75, 23);
-            this.CalculateGramsButton.TabIndex = 45;
+            this.CalculateGramsButton.TabIndex = 49;
             this.CalculateGramsButton.Text = "Calculate";
             this.CalculateGramsButton.UseVisualStyleBackColor = true;
             this.CalculateGramsButton.Click += new System.EventHandler(this.CalculateGramsButton_Click);
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Location = new System.Drawing.Point(192, 73);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(31, 13);
+            this.label34.TabIndex = 48;
+            this.label34.Text = "0.2-2";
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(123, 73);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(31, 13);
+            this.label31.TabIndex = 47;
+            this.label31.Text = "0-5.5";
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Location = new System.Drawing.Point(48, 73);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(46, 13);
+            this.label33.TabIndex = 46;
+            this.label33.Text = "0.55-1.5";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(19, 53);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(26, 13);
+            this.label28.TabIndex = 23;
+            this.label28.Text = "g/lb";
             // 
             // CustomGramsRemaining
             // 
@@ -1170,15 +1243,6 @@
             this.ProteinGramTotal.Name = "ProteinGramTotal";
             this.ProteinGramTotal.Size = new System.Drawing.Size(0, 13);
             this.ProteinGramTotal.TabIndex = 35;
-            // 
-            // label31
-            // 
-            this.label31.AutoSize = true;
-            this.label31.Location = new System.Drawing.Point(119, 73);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(42, 13);
-            this.label31.TabIndex = 34;
-            this.label31.Text = "Results";
             // 
             // label30
             // 
@@ -1844,15 +1908,6 @@
             this.ClearAll.UseVisualStyleBackColor = true;
             this.ClearAll.Click += new System.EventHandler(this.ClearAll_Click);
             // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(19, 53);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(26, 13);
-            this.label28.TabIndex = 23;
-            this.label28.Text = "g/lb";
-            // 
             // FitnessCalculator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2010,7 +2065,6 @@
         private System.Windows.Forms.Label CarbsGramTotal;
         private System.Windows.Forms.Label ProteinGramPercent;
         private System.Windows.Forms.Label ProteinGramTotal;
-        private System.Windows.Forms.Label label31;
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.Label label11;
@@ -2055,8 +2109,14 @@
         private System.Windows.Forms.Label VeggiesPerMealLabel;
         private System.Windows.Forms.Label CarbsPerMealLabel;
         private System.Windows.Forms.Label ProteinPerMealLabel;
-        private System.Windows.Forms.Button CalculateGramsButton;
         private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.Label label39;
+        private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.Button CalculateGramsButton;
     }
 }
 
