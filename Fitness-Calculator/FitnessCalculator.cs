@@ -137,6 +137,27 @@ namespace Fitness_Calculator
 
                     if (i == 3)
                     {
+                        //  goal weight, weekly weight loss, goal date, calorie budget, protein grams, carbs grams, fat grams
+                        string fontPath = "C:\\Program Files (x86)\\BWC\\Fitness-Calculator\\Fonts\\BentonSans Regular_0.otf";
+                        BaseFont bf = BaseFont.CreateFont(fontPath, BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
+                        cb.SetColorFill(new BaseColor(50, 48, 48));
+                        cb.SetFontAndSize(bf, 10);
+
+                        cb.ShowTextAligned(1, cd.weight_loss, 240, 385, 0);
+                        double weekly = Math.Round(cd.weight_diff / ((cd.end_date- cd.start_date).TotalDays / 7), 2);
+                        cb.ShowTextAligned(1, weekly.ToString(), 373, 385, 0);
+
+                        cb.ShowTextAligned(1, cd.end_date.ToString("M/d/yyyy"), 506, 385, 0);
+                        cb.ShowTextAligned(1, cd.DietCalories.ToString(), 100, 270, 0);
+
+                        double proteinGrams = Math.Round((cd.proteinPercent * cd.DietCalories / 100) / 4.0, 1);
+                        double fatGrams = Math.Round((cd.fatPercent * cd.DietCalories / 100) / 9.0, 1);
+                        double carbGrams = Math.Round((cd.carbPercent * cd.DietCalories / 100) / 4.0, 1);
+
+                        cb.ShowTextAligned(1, proteinGrams.ToString() + " g", 240, 117, 0);
+                        cb.ShowTextAligned(1, carbGrams.ToString() + " g", 373, 117, 0);
+                        cb.ShowTextAligned(1, fatGrams.ToString() + " g", 506, 117, 0);
+
                         // draw rectangle for activity level
                         // TODO: adjust position
                         // adjust the size and color depending on activity level
@@ -241,6 +262,27 @@ namespace Fitness_Calculator
                         cb.Stroke();
 
 
+                    }
+                    else if (i == 9)
+                    {
+                        // portions, calorie budget
+                        string fontPath = "C:\\Program Files (x86)\\BWC\\Fitness-Calculator\\Fonts\\BentonSans Regular_0.otf";
+                        BaseFont bf = BaseFont.CreateFont(fontPath, BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
+                        cb.SetColorFill(BaseColor.BLACK);
+                        cb.SetFontAndSize(bf, 12);
+
+                        cb.ShowTextAligned(0, Math.Round(protein_amount).ToString() + " palms of protein", 170, 680, 0);
+                        cb.ShowTextAligned(0, Math.Round(veggies_amount).ToString() + " fist sized portions of vegetables", 170, 560, 0);
+                        cb.ShowTextAligned(0, Math.Round(carbs_amount).ToString() + " cupped handfuls of carbs", 170, 440, 0);
+                        cb.ShowTextAligned(0, Math.Round(fat_amount).ToString() + " thumb sized portions of fat", 170, 320, 0);
+
+                        cb.SetFontAndSize(bf, 14);
+                        cb.ShowTextAligned(0, cd.DietCalories.ToString(), 235, 224, 0);
+
+                    }
+                    else if (i == 11)
+                    {
+                        // portions per day
                     }
                 }
 
@@ -615,6 +657,18 @@ namespace Fitness_Calculator
             return cd.TDEE;
         }
 
+        double palm;
+        double fist;
+        double hand;
+        double thumb;
+
+        double protein_amount;
+
+        double veggies_amount;
+
+        double carbs_amount;
+        double fat_amount;
+
         private void MenuTab_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (MenuTab.SelectedIndex == 2)
@@ -674,10 +728,10 @@ namespace Fitness_Calculator
                     CarbsPerMealLabel.Text = double.Parse(HPCarbTextBox.Text) / double.Parse(cd.Meals) + " handfuls per meal";
                     FatsPerMealLabel.Text = double.Parse(HPFatTextBox.Text) / double.Parse(cd.Meals) + " thumbs per meal";
 
-                    double palm = double.Parse(HPProteinTextBox.Text) * 140;
-                    double fist = double.Parse(HPVeggieTextBox.Text) * 25;
-                    double hand = double.Parse(HPCarbTextBox.Text) * 120;
-                    double thumb = double.Parse(HPFatTextBox.Text) * 110;
+                    palm = double.Parse(HPProteinTextBox.Text) * 140;
+                    fist = double.Parse(HPVeggieTextBox.Text) * 25;
+                    hand = double.Parse(HPCarbTextBox.Text) * 120;
+                    thumb = double.Parse(HPFatTextBox.Text) * 110;
 
                     ResultCustomCLabel.Text = (palm + fist + hand + thumb).ToString();
 
@@ -768,13 +822,13 @@ namespace Fitness_Calculator
                     // calculate hands
                     double cals = cd.DietCalories;
 
-                    double protein_amount = cals * (cd.proteinPercent / 100);
+                    protein_amount = cals * (cd.proteinPercent / 100);
                     double the_rest = cals - protein_amount;
 
-                    double veggies_amount = the_rest * .10;
+                    veggies_amount = the_rest * .10;
 
-                    double carbs_amount = ((cd.carbPercent - 5) / 100) * the_rest;
-                    double fat_amount = ((cd.fatPercent - 5) / 100) * the_rest;
+                    carbs_amount = ((cd.carbPercent - 5) / 100) * the_rest;
+                    fat_amount = ((cd.fatPercent - 5) / 100) * the_rest;
 
                     protein_amount = (protein_amount / 4) / 30;
                     carbs_amount = (carbs_amount / 4) / 25;
@@ -799,13 +853,13 @@ namespace Fitness_Calculator
                     // calculate protein first
                     double cals = double.Parse(ResultGoalCLabel.Text);
 
-                    double protein_amount = cals * (cd.proteinPercent / 100);
+                    protein_amount = cals * (cd.proteinPercent / 100);
                     double the_rest = cals - protein_amount;
 
-                    double veggies_amount = the_rest * .10;
+                    veggies_amount = the_rest * .10;
 
-                    double carbs_amount = ((cd.carbPercent - 5) / 100) * the_rest;
-                    double fat_amount = ((cd.fatPercent - 5) / 100) * the_rest;
+                    carbs_amount = ((cd.carbPercent - 5) / 100) * the_rest;
+                    fat_amount = ((cd.fatPercent - 5) / 100) * the_rest;
 
 
 
