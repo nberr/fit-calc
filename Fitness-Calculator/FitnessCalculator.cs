@@ -804,8 +804,31 @@ namespace Fitness_Calculator
                 }
                 else if (cd.Macro == "custom %")
                 {
-                    CustomCalLabel.Visible = true;
-                    ResultCustomCLabel.Visible = true;
+                    CustomCalLabel.Visible = false;
+                    ResultCustomCLabel.Visible = false;
+
+                    double protein_amount = cd.DietCalories * (cd.proteinPercent / 100);
+                    double the_rest = cd.DietCalories - protein_amount;
+
+                    double veggies_amount = the_rest * .10;
+
+                    double carbs_amount = ((cd.carbPercent - 5) / 100) * the_rest;
+                    double fat_amount = ((cd.fatPercent - 5) / 100) * the_rest;
+
+                    protein_amount = (protein_amount / 4) / 30;
+                    carbs_amount = (carbs_amount / 4) / 25;
+                    fat_amount = ((fat_amount / 9) / 11) + 1;
+                    veggies_amount = veggies_amount / 25;
+
+                    PalmProteinLabel.Text = Math.Round(protein_amount) + " palm(s) of protein";
+                    FistVeggieLabel.Text = Math.Round(veggies_amount) + " fist(s) of veggies";
+                    HandfulCarbLabel.Text = Math.Round(carbs_amount) + " cupped handful(s) of carbs";
+                    ThumbFatsLabel.Text = Math.Round(fat_amount) + " thumb-sized portion(s) of healthy fat";
+
+                    ProteinPerMealLabel.Text = Math.Round(protein_amount) / double.Parse(cd.Meals) + " palms per meal";
+                    VeggiesPerMealLabel.Text = Math.Round(veggies_amount) / double.Parse(cd.Meals) + " fists per meal";
+                    CarbsPerMealLabel.Text = Math.Round(carbs_amount) / double.Parse(cd.Meals) + " handfuls per meal";
+                    FatsPerMealLabel.Text = Math.Round(fat_amount) / double.Parse(cd.Meals) + " thumbs per meal";
                 }
                 else if (cd.Macro == "custom grams")
                 {
@@ -1036,6 +1059,86 @@ namespace Fitness_Calculator
                 {
                     case "custom %":
                         MacroPercentagePanel.Visible = true;
+
+                        // anything       
+                        // meditterranean 
+                        // paleo          
+                        // vegetarian     
+                        // keto         
+                        // fully plant 
+                        int protein_min = -1, protein_max = -1;
+                        int carb_min = -1, carb_max = -1;
+                        int fat_min = -1, fat_max = -1;
+
+                        switch (DietaryPrefComboBox.SelectedIndex)
+                        {
+                            case 0:
+                                protein_min = 15;
+                                protein_max = 70;
+
+                                carb_min = 15;
+                                carb_max = 70;
+
+                                fat_min = 15;
+                                fat_max = 50;
+
+                                break;
+                            case 1:
+                                protein_min = 15;
+                                protein_max = 50;
+
+                                carb_min = 15;
+                                carb_max = 60;
+
+                                fat_min = 25;
+                                fat_max = 60;
+                                break;
+                            case 2:
+                                protein_min = 15;
+                                protein_max = 50;
+
+                                carb_min = 15;
+                                carb_max = 50;
+
+                                fat_min = 25;
+                                fat_max = 60;
+                                break;
+                            case 3:
+                                protein_min = 15;
+                                protein_max = 50;
+
+                                carb_min = 15;
+                                carb_max = 70;
+
+                                fat_min = 15;
+                                fat_max = 50;
+                                break;
+                            case 4:
+                                protein_min = 15;
+                                protein_max = 35;
+
+                                carb_min = 5;
+                                carb_max = 15;
+
+                                fat_min = 50;
+                                fat_max = 80;
+                                break;
+                            case 5:
+                                protein_min = 15;
+                                protein_max = 35;
+
+                                carb_min = 15;
+                                carb_max = 75;
+
+                                fat_min = 15;
+                                fat_max = 50;
+                                break;
+                        }
+
+                        ProteinMinMaxLabel.Text = protein_min.ToString() + "% - " + protein_max.ToString() + "%";
+                        CarbsMinMaxLabel.Text = carb_min.ToString() + "% - " + carb_max.ToString() + "%";
+                        FatMinMaxLabel.Text = fat_min.ToString() + "% - " + fat_max.ToString() + "%";
+
                         break;
                     case "custom grams":
                         MacroGramsPanel.Visible = true;
@@ -1373,6 +1476,56 @@ namespace Fitness_Calculator
             {
 
             }
+        }
+
+        private void CMProteinTextBox_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                cd.proteinPercent = float.Parse(CMProteinTextBox.Text);
+                proteinCals = (cd.proteinPercent / 100) * cd.DietCalories;
+
+                CMProteinGramLabel.Text = Math.Round(proteinCals / 4).ToString() + "g";
+            }
+            catch(Exception)
+            {
+
+            }
+        }
+
+        private void CMCarbTextBox_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                cd.carbPercent = float.Parse(CMCarbTextBox.Text);
+                carbsCals = (cd.carbPercent / 100) * cd.DietCalories;
+
+                CMCarbGramLabel.Text = Math.Round(carbsCals / 4).ToString() + "g";
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
+        private void CMFatTextBox_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                cd.fatPercent = float.Parse(CMFatTextBox.Text);
+                fatsCals = (cd.fatPercent / 100) * cd.DietCalories;
+
+                CMFatGramLabel.Text = Math.Round(fatsCals / 9).ToString() + "g";
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
+        private void CustomCalLabel_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
