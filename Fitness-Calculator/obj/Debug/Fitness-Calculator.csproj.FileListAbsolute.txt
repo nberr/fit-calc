@@ -78,7 +78,6 @@ C:\Users\nberr\source\repos\fit-calc\Fitness-Calculator\bin\Debug\itext.sign.xml
 C:\Users\nberr\source\repos\fit-calc\Fitness-Calculator\bin\Debug\itext.styledxmlparser.xml
 C:\Users\nberr\source\repos\fit-calc\Fitness-Calculator\bin\Debug\itext.svg.xml
 C:\Users\nberr\source\repos\fit-calc\Fitness-Calculator\bin\Debug\itextsharp.xml
-C:\Users\nberr\source\repos\fit-calc\Fitness-Calculator\obj\Debug\Fitness-Calculator.csprojAssemblyReference.cache
 C:\Users\nberr\source\repos\fit-calc\Fitness-Calculator\obj\Debug\Fitness_Calculator.FitnessCalculator.resources
 C:\Users\nberr\source\repos\fit-calc\Fitness-Calculator\obj\Debug\Fitness_Calculator.Properties.Resources.resources
 C:\Users\nberr\source\repos\fit-calc\Fitness-Calculator\obj\Debug\Fitness-Calculator.csproj.GenerateResource.cache

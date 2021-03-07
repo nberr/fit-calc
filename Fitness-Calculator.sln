@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.28307.1321
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fitness-Calculator", "Fitness-Calculator\Fitness-Calculator.csproj", "{3F088625-F03D-48C3-90BD-308A02F23F33}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Installer", "Setup\Setup.vdproj", "{83004C5E-7C34-4DA7-92A3-03C32489172B}"
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Installer", "Installer\Installer.vdproj", "{E0C898E8-7E46-4CD3-BDB8-1AA49BEB0D0D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,8 @@ Global
 		{3F088625-F03D-48C3-90BD-308A02F23F33}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3F088625-F03D-48C3-90BD-308A02F23F33}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3F088625-F03D-48C3-90BD-308A02F23F33}.Release|Any CPU.Build.0 = Release|Any CPU
-		{83004C5E-7C34-4DA7-92A3-03C32489172B}.Debug|Any CPU.ActiveCfg = Debug
-		{83004C5E-7C34-4DA7-92A3-03C32489172B}.Debug|Any CPU.Build.0 = Debug
-		{83004C5E-7C34-4DA7-92A3-03C32489172B}.Release|Any CPU.ActiveCfg = Release
-		{83004C5E-7C34-4DA7-92A3-03C32489172B}.Release|Any CPU.Build.0 = Release
+		{E0C898E8-7E46-4CD3-BDB8-1AA49BEB0D0D}.Debug|Any CPU.ActiveCfg = Debug
+		{E0C898E8-7E46-4CD3-BDB8-1AA49BEB0D0D}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

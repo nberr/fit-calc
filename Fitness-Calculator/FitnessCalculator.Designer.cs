@@ -133,6 +133,9 @@
             this.FatRadioButton = new System.Windows.Forms.RadioButton();
             this.CarbRadioButton = new System.Windows.Forms.RadioButton();
             this.MacroPercentagePanel = new System.Windows.Forms.Panel();
+            this.CMFatTextBox = new System.Windows.Forms.TextBox();
+            this.CMCarbTextBox = new System.Windows.Forms.TextBox();
+            this.CMProteinTextBox = new System.Windows.Forms.TextBox();
             this.FatMinMaxLabel = new System.Windows.Forms.Label();
             this.CarbsMinMaxLabel = new System.Windows.Forms.Label();
             this.ProteinMinMaxLabel = new System.Windows.Forms.Label();
@@ -185,9 +188,6 @@
             this.label14 = new System.Windows.Forms.Label();
             this.GenerateReport = new System.Windows.Forms.Button();
             this.ClearAll = new System.Windows.Forms.Button();
-            this.CMProteinTextBox = new System.Windows.Forms.TextBox();
-            this.CMCarbTextBox = new System.Windows.Forms.TextBox();
-            this.CMFatTextBox = new System.Windows.Forms.TextBox();
             this.MenuTab.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -915,7 +915,7 @@
             this.MacroTotalsPanel.Controls.Add(this.label8);
             this.MacroTotalsPanel.Controls.Add(this.MacroCarbsTextBox);
             this.MacroTotalsPanel.Controls.Add(this.MacroProteinTextBox);
-            this.MacroTotalsPanel.Location = new System.Drawing.Point(354, 158);
+            this.MacroTotalsPanel.Location = new System.Drawing.Point(367, 227);
             this.MacroTotalsPanel.Name = "MacroTotalsPanel";
             this.MacroTotalsPanel.Size = new System.Drawing.Size(240, 113);
             this.MacroTotalsPanel.TabIndex = 0;
@@ -1339,6 +1339,30 @@
             this.MacroPercentagePanel.Size = new System.Drawing.Size(314, 237);
             this.MacroPercentagePanel.TabIndex = 22;
             this.MacroPercentagePanel.Visible = false;
+            // 
+            // CMFatTextBox
+            // 
+            this.CMFatTextBox.Location = new System.Drawing.Point(92, 101);
+            this.CMFatTextBox.Name = "CMFatTextBox";
+            this.CMFatTextBox.Size = new System.Drawing.Size(100, 20);
+            this.CMFatTextBox.TabIndex = 28;
+            this.CMFatTextBox.TextChanged += new System.EventHandler(this.CMFatTextBox_TextChanged);
+            // 
+            // CMCarbTextBox
+            // 
+            this.CMCarbTextBox.Location = new System.Drawing.Point(92, 65);
+            this.CMCarbTextBox.Name = "CMCarbTextBox";
+            this.CMCarbTextBox.Size = new System.Drawing.Size(100, 20);
+            this.CMCarbTextBox.TabIndex = 27;
+            this.CMCarbTextBox.TextChanged += new System.EventHandler(this.CMCarbTextBox_TextChanged);
+            // 
+            // CMProteinTextBox
+            // 
+            this.CMProteinTextBox.Location = new System.Drawing.Point(92, 28);
+            this.CMProteinTextBox.Name = "CMProteinTextBox";
+            this.CMProteinTextBox.Size = new System.Drawing.Size(100, 20);
+            this.CMProteinTextBox.TabIndex = 26;
+            this.CMProteinTextBox.TextChanged += new System.EventHandler(this.CMProteinTextBox_TextChanged);
             // 
             // FatMinMaxLabel
             // 
@@ -1877,30 +1901,6 @@
             this.ClearAll.Text = "Clear All";
             this.ClearAll.UseVisualStyleBackColor = true;
             this.ClearAll.Click += new System.EventHandler(this.ClearAll_Click);
-            // 
-            // CMProteinTextBox
-            // 
-            this.CMProteinTextBox.Location = new System.Drawing.Point(92, 28);
-            this.CMProteinTextBox.Name = "CMProteinTextBox";
-            this.CMProteinTextBox.Size = new System.Drawing.Size(100, 20);
-            this.CMProteinTextBox.TabIndex = 26;
-            this.CMProteinTextBox.TextChanged += new System.EventHandler(this.CMProteinTextBox_TextChanged);
-            // 
-            // CMCarbTextBox
-            // 
-            this.CMCarbTextBox.Location = new System.Drawing.Point(92, 65);
-            this.CMCarbTextBox.Name = "CMCarbTextBox";
-            this.CMCarbTextBox.Size = new System.Drawing.Size(100, 20);
-            this.CMCarbTextBox.TabIndex = 27;
-            this.CMCarbTextBox.TextChanged += new System.EventHandler(this.CMCarbTextBox_TextChanged);
-            // 
-            // CMFatTextBox
-            // 
-            this.CMFatTextBox.Location = new System.Drawing.Point(92, 101);
-            this.CMFatTextBox.Name = "CMFatTextBox";
-            this.CMFatTextBox.Size = new System.Drawing.Size(100, 20);
-            this.CMFatTextBox.TabIndex = 28;
-            this.CMFatTextBox.TextChanged += new System.EventHandler(this.CMFatTextBox_TextChanged);
             // 
             // FitnessCalculator
             // 

@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="BouncyCastle.Crypto.dll" size="2918960">
-      <assemblyIdentity name="BouncyCastle.Crypto" version="1.8.9.0" publicKeyToken="0E99375E54769942" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="BouncyCastle.Crypto.dll" size="2930352">
+      <assemblyIdentity name="BouncyCastle.Crypto" version="1.8.10.0" publicKeyToken="0E99375E54769942" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>C9X9xPQ4/6Tq1MyLOg0ywCpD8IVadXJLJCzzVHZQOs4=</dsig:DigestValue>
+        <dsig:DigestValue>B0mLmQqoSRbsbYTiTN+ZoKwOJl/z5TWYqbFTKFvSNZQ=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -78,122 +78,134 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Fitness-Calculator.exe" size="21472">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="FileHelpers.dll" size="229376">
+      <assemblyIdentity name="FileHelpers" version="3.4.2.0" publicKeyToken="3E0C08D59CC3D657" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>DsUVcxw/cGYeLcDe2S72qvYAWub7Pt8cUzBigu+z/dk=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Fitness-Calculator.exe" size="70624">
       <assemblyIdentity name="Fitness-Calculator" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>LmaZAwQQO/KKvMD//SD9QbLPRld/D3Bx/lnctc3Ipl4=</dsig:DigestValue>
+        <dsig:DigestValue>cPs2zfH8Vn4RDlE4P9OFBduLW8XrHyvxc+LBXj5QrTg=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="itext.barcodes.dll" size="145920">
-      <assemblyIdentity name="itext.barcodes" version="7.1.13.0" publicKeyToken="8354AE6D2174DDCA" language="neutral" processorArchitecture="msil" />
+      <assemblyIdentity name="itext.barcodes" version="7.1.14.0" publicKeyToken="8354AE6D2174DDCA" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>gkhyqY7B6pf1PKA7tbtfSSOx0PsXD7CgUtwLiyratn8=</dsig:DigestValue>
+        <dsig:DigestValue>rKrPv9a8FHASdSkBIVsExjvVzulOspdyf5U65dQ6Fis=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="itext.forms.dll" size="121344">
-      <assemblyIdentity name="itext.forms" version="7.1.13.0" publicKeyToken="8354AE6D2174DDCA" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="itext.forms.dll" size="123904">
+      <assemblyIdentity name="itext.forms" version="7.1.14.0" publicKeyToken="8354AE6D2174DDCA" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>89I+5WD6I3dGCOVNyEmMUcBP2rF7OvT7VWpYzUtdrvw=</dsig:DigestValue>
+        <dsig:DigestValue>p4JZwXE5IGvBYv2rM2ARopkdfF2AIrIPXihAIyfPox0=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="itext.io.dll" size="1571328">
-      <assemblyIdentity name="itext.io" version="7.1.13.0" publicKeyToken="8354AE6D2174DDCA" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="itext.io.dll" size="1593856">
+      <assemblyIdentity name="itext.io" version="7.1.14.0" publicKeyToken="8354AE6D2174DDCA" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>nqmWPf9xVTsQkc/X2aoWdhYU3zEIvVeSHlotThujvv0=</dsig:DigestValue>
+        <dsig:DigestValue>6m+VviLrgPVBlTNH+p0JVu6TydrD5LDGYY97N+Qz2ss=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="itext.kernel.dll" size="932352">
-      <assemblyIdentity name="itext.kernel" version="7.1.13.0" publicKeyToken="8354AE6D2174DDCA" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="itext.kernel.dll" size="933888">
+      <assemblyIdentity name="itext.kernel" version="7.1.14.0" publicKeyToken="8354AE6D2174DDCA" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>WUjSpZcFuNm5OUSG94RTYprsfBKORzBej5quVcd16FQ=</dsig:DigestValue>
+        <dsig:DigestValue>oPlfqyuo5djPEdV0c73iJ/HwzfmM5SymCGdQd89IBN0=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="itext.layout.dll" size="350208">
-      <assemblyIdentity name="itext.layout" version="7.1.13.0" publicKeyToken="8354AE6D2174DDCA" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="itext.layout.dll" size="360448">
+      <assemblyIdentity name="itext.layout" version="7.1.14.0" publicKeyToken="8354AE6D2174DDCA" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>SQD2zucfyrBwA1nCdC3e6ZjdXyOZI5Td9tv/Qg8keXg=</dsig:DigestValue>
+        <dsig:DigestValue>pHHn5/wk66tf7mKomEj8wP+HnduW56EPlqerPT9Oecc=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="itext.pdfa.dll" size="91136">
-      <assemblyIdentity name="itext.pdfa" version="7.1.13.0" publicKeyToken="8354AE6D2174DDCA" language="neutral" processorArchitecture="msil" />
+      <assemblyIdentity name="itext.pdfa" version="7.1.14.0" publicKeyToken="8354AE6D2174DDCA" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>+1lCIlTjXT2z57pp1AAv9tMJ1/hSQZsbDzyjCxIz8Zo=</dsig:DigestValue>
+        <dsig:DigestValue>mgN7o9db3ZueAXz8yrd732BeN63eZ+KlZ2YH1s4zl7I=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="itext.sign.dll" size="96256">
-      <assemblyIdentity name="itext.sign" version="7.1.13.0" publicKeyToken="8354AE6D2174DDCA" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="itext.sign.dll" size="95232">
+      <assemblyIdentity name="itext.sign" version="7.1.14.0" publicKeyToken="8354AE6D2174DDCA" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>AByNtM4bw0YQu4WWwipPK76mE4w3U7aZszgMaAaIq84=</dsig:DigestValue>
+        <dsig:DigestValue>Cnlch6i3ogED18+nFBHz5cNlKJv//aaudCHPJLCVfjY=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="itext.styledxmlparser.dll" size="314880">
-      <assemblyIdentity name="itext.styledxmlparser" version="7.1.13.0" publicKeyToken="8354AE6D2174DDCA" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="itext.styledxmlparser.dll" size="321536">
+      <assemblyIdentity name="itext.styledxmlparser" version="7.1.14.0" publicKeyToken="8354AE6D2174DDCA" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>iZQ0ZKipiBK1SVLWLFuIFkF39incWRkl3S01R9/8cis=</dsig:DigestValue>
+        <dsig:DigestValue>K2DB/4fkt8Y1cZjcoMp3VdDu4zUc60ZvjYq2cOFE+A0=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="itext.svg.dll" size="116736">
-      <assemblyIdentity name="itext.svg" version="7.1.13.0" publicKeyToken="8354AE6D2174DDCA" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="itext.svg.dll" size="126976">
+      <assemblyIdentity name="itext.svg" version="7.1.14.0" publicKeyToken="8354AE6D2174DDCA" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>Azdt8KhAvJoZKz1CVuIvlbqeZ0sQPzNjhaNtmt5QTwA=</dsig:DigestValue>
+        <dsig:DigestValue>x9evWvIs9mbH+hQb/APykuF2YHLXnT22qJ86j8jOD7U=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -209,13 +221,13 @@
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="Fitness-Calculator.exe.config" size="546">
+  <file name="Fitness-Calculator.exe.config" size="548">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>qGY1wtvBDPREA0hQ0neeHi6ARo2gJz5Vtl7KvCuse64=</dsig:DigestValue>
+      <dsig:DigestValue>K8WozcgTEI2rzTqO/vQqym+WeYZQ/OFdV83xkHmbipU=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>

@@ -89,6 +89,7 @@ namespace Fitness_Calculator
                                 MessageBox.Show("Could not find font: " + data.Font + "\nMake sure font is in the program folder. Setting font to Helvetica.", "Font Missing");
                                 bf = BaseFont.CreateFont(BaseFont.HELVETICA, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
                                 cb.SetColorFill(BaseColor.BLACK);
+                                Console.WriteLine(data.Font);
                             }
 
                             try
@@ -138,7 +139,7 @@ namespace Fitness_Calculator
                     if (i == 3)
                     {
                         //  goal weight, weekly weight loss, goal date, calorie budget, protein grams, carbs grams, fat grams
-                        string fontPath = "C:\\Program Files (x86)\\BWC\\Fitness-Calculator\\Fonts\\BentonSans Regular_0.otf";
+                        string fontPath = "C:\\Program Files (x86)\\BWC\\Fitness-Calculator\\Fonts\\BentonSans_Regular_0.otf";
                         BaseFont bf = BaseFont.CreateFont(fontPath, BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
                         cb.SetColorFill(new BaseColor(50, 48, 48));
                         cb.SetFontAndSize(bf, 10);
@@ -266,7 +267,7 @@ namespace Fitness_Calculator
                     else if (i == 9)
                     {
                         // portions, calorie budget
-                        string fontPath = "C:\\Program Files (x86)\\BWC\\Fitness-Calculator\\Fonts\\BentonSans Regular_0.otf";
+                        string fontPath = "C:\\Program Files (x86)\\BWC\\Fitness-Calculator\\Fonts\\BentonSans_Regular_0.otf";
                         BaseFont bf = BaseFont.CreateFont(fontPath, BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
                         cb.SetColorFill(BaseColor.BLACK);
                         cb.SetFontAndSize(bf, 12);
@@ -640,8 +641,14 @@ namespace Fitness_Calculator
                 else if (cd.client_level == 2)
                 {
                     cd.FFM = cd.weight_kg * ((100 - cd.BFP) / 100);
-                    cd.BMR = 370 + (21.6 * cd.FFM);
+                    Console.WriteLine("BFP: " + cd.BFP.ToString());
+                    Console.WriteLine("FFM: " + cd.FFM.ToString());
+
+
+                    cd.BMR = 370 + (21.6 * (cd.FFM));
+                    Console.WriteLine("BRM: " + cd.BMR.ToString());
                     cd.TDEE = cd.BMR * cd.PAM;
+                    Console.WriteLine("TDEE: " + cd.TDEE.ToString());
                 }
                 else
                 {
@@ -689,7 +696,8 @@ namespace Fitness_Calculator
             {
                 cd.TDEE = Math.Round(GetMaintenanceCalories() / 5.0) * 5;
                 int days = (cd.end_date - cd.start_date).Days;
-                cd.DietCalories = (Math.Round((GetMaintenanceCalories() - 200 - (500 * (cd.weight_diff / (days / 7)))) / 5.0) * 5);
+                cd.DietCalories = GetMaintenanceCalories() - ((3500 * cd.weight_diff) / days);
+                Console.WriteLine("diet cals: " + cd.DietCalories.ToString());
 
                 MealsComboBox.SelectedIndex = 0;
             }
@@ -708,7 +716,7 @@ namespace Fitness_Calculator
                 ResultMacroFatLabel.Text = cd.fatPercent.ToString() + " % fat";
 
                 ResultMaintenanceCLabel.Text = (Math.Round(GetMaintenanceCalories() / 5.0) * 5).ToString();
-                ResultGoalCLabel.Text = (Math.Round((GetMaintenanceCalories() - 200 - (500 * (cd.weight_diff / (days / 7)))) / 5.0) * 5).ToString();
+                ResultGoalCLabel.Text = cd.DietCalories.ToString();
 
                 Console.WriteLine(cd.Macro);
 
@@ -1339,7 +1347,7 @@ namespace Fitness_Calculator
 
         private void BodyFatTextBox_TextChanged(object sender, EventArgs e)
         {
-            
+            cd.BFP = double.Parse(BodyFatTextBox.Text);
         }
 
         private void RMRTextBox_TextChanged(object sender, EventArgs e)
@@ -1374,7 +1382,7 @@ namespace Fitness_Calculator
             }
             else
             {
-
+               
             }
         }
 
